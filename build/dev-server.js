@@ -7,6 +7,7 @@ var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = process.env.NODE_ENV === 'testing'
   ? require('./webpack.prod.conf')
   : require('./webpack.dev.conf')
+var opn = require('opn')
 
 // 开发服务器默认访问端口
 var port = process.env.PORT || config.dev.port
@@ -61,5 +62,9 @@ module.exports = app.listen(port, function (err) {
 		console.log(err)
 		return
 	}
-	console.log('Listening at http://localhost:' + port + '\n')
+	var uri = 'http://localhost:' + port
+	console.log('Listening at ' + uri + '\n')
+	if (process.env.NODE_ENV !== 'testing') {
+    opn(uri)
+  }
 })

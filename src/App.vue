@@ -1,13 +1,8 @@
 <template lang="jade">
 	.page
 		.box
-		header(is='temp')
+		
 </template>
-
-<style lang="scss" scoped="true">
-	
-	
-</style>
 
 <script>
 
@@ -42,3 +37,8 @@
 		}
 	}
 </script>
+
+<style lang="scss" scoped="true">
+	
+	
+</style>

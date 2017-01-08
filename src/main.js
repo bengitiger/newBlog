@@ -21,7 +21,7 @@ Vue.use(lazy);								//注册lazy
 * 	preNamePath ： 二级路由路径
 * 	curName ： 当前路由名称
 */
-const router = new VueRouter({
+const routers = new VueRouter({
 	mode: 'history',
 	routes:[{
 			path:'/',
@@ -35,12 +35,7 @@ const router = new VueRouter({
 			name: 'login',
 			component:require('components/login.vue'),
 			auth: true
-		},{
-			path:'/password',
-			name: 'password',
-			component:require('components/password.vue'),
-			auth: false
-		},{
+		},,{
 			path:'/noticelist',
 			rootName: '首页',
 			rootNamePath: '/index.html',
@@ -63,13 +58,15 @@ const router = new VueRouter({
 	]
 });
 
+const router = new VueRouter({
+  routers
+});
+
 sync(store, router)
 
-
-
-new Vue({
-	el: '#app',
-	components: {
-		'my-component': Favlist
-	}
+var app = new Vue({
+  el: '#app',
+  router,
+  store,
+  ...App,
 });
