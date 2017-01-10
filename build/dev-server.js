@@ -1,6 +1,6 @@
 var path = require('path')								//引入 nodejs 中的path模块
 var http = require('http')								//引入 nodejs 中的http模块
-var express=require('express')						//引入 nodejs 中的express模块
+var express=require('express')							//引入 nodejs 中的express模块
 var webpack = require('webpack')
 var config = require('../config')
 var proxyMiddleware = require('http-proxy-middleware')

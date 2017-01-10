@@ -1,4 +1,4 @@
-//vue build é¡¹ç›®é…ç½®
+//vue build ÏîÄ¿ÅäÖÃ
 // https://github.com/shelljs/shelljs
 require('shelljs/global')
 env.NODE_ENV = 'production'

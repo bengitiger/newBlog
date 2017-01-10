@@ -1,6 +1,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path')									//引入 nodejs 中的path模块
-var config = require('config.js')						//引入开发环境与发布环境配置
+var config = require('./config.js')						//引入开发环境与发布环境配置
 
 //开发与发布环境配置项
 module.exports = {

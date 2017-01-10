@@ -1,4 +1,4 @@
-//寮�鍙戜笌鍙戝竷鐜鍚堝苟
+//开发环境配置
 var merge = require('webpack-merge')
 var prodEnv = require('./prod.env')
 

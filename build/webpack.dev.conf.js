@@ -32,3 +32,11 @@ Object.keys(webpackBaseConfig.entry).forEach(function (name) {
     Plugins.push(plugin);
 })
 
+module.exports = merge(webpackBaseConfig, {
+  module: {
+    loaders: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
+  },
+  // 使用 eval 过的 souremap 开发时速度更快
+  devtool: '#eval-source-map',
+  plugins: Plugins
+})
