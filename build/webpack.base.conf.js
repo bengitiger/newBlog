@@ -6,6 +6,7 @@ var config = require('../config')
 var configs = require('../config/config.js')
 var projectRoot = path.resolve(__dirname, '../')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var entrys = getEntry("./src/views/**/*.js");		//获得入口js文件
 
 function getEntry(globPath) {
   var entries = {}, basename, tmp;
@@ -16,14 +17,12 @@ function getEntry(globPath) {
 	});
 	return entries;
 }
-var entrys = getEntry("./src/views/**/*.js");		//获得入口js文件
-
 
 module.exports = {
 	//入口
-  entry:entrys,
+	entry:entrys,
 	//输出
-  output : {
+	output : {
 		path: config.build.assetsRoot,
 		publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
 		filename: '[name].js'
@@ -35,7 +34,7 @@ module.exports = {
 		//路径别名
 		alias: {
 			'src': path.resolve(__dirname, '../src'),
-			'Config': path.resolve(__dirname, "../config"),
+			'config': path.resolve(__dirname, "../config"),
 			'js': path.resolve(__dirname, "../src/assets/js"),
 			'sass': path.resolve(__dirname, "../src/assets/sass"),
 			'components': path.resolve(__dirname, "../src/components"),
@@ -43,13 +42,13 @@ module.exports = {
 			'plugin': path.resolve(__dirname, "../src/plugin"),
 			'views': path.resolve(__dirname, "../src/views"),
 			'utils': path.resolve(__dirname, "../src/utils"),
-			'vuex': path.resolve(__dirname, "../src/vuex"),
+			'Vuex': path.resolve(__dirname, "../src/vuex"),
 			'dist': path.resolve(__dirname, "../dist")
 		}
 	},
 	resolveLoader: {
 		fallback: [path.join(__dirname, '../node_modules')]
-  },
+	},
 	//webpack模块
 	module : {
 		loaders : [{
@@ -77,15 +76,15 @@ module.exports = {
 			loader: 'url',
 			query: {
 				limit: 10000,
-				name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+				name: utils.assetsPath('fonts/[name].[ext]')	//fonts/[name].[hash:7].[ext]
 			}
 		}]
 	},
 	/* 其他插件
 	externals: {
-    "BMap": "BMap"
-  },*/
-  vue : {
-    loaders: utils.cssLoaders()
-  }
+	"BMap": "BMap"
+	},*/
+	vue : {
+		loaders: utils.cssLoaders()
+	}
 }

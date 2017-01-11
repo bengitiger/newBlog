@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
-import { getCookie, signOut } from '../utils/authService' //引入登录、获取cookie方法
-var CONFIG = require('../../config/config') //获取URL配置
+import { getCookie, signOut } from '../utils/auth' //引入登录、获取cookie方法
+var CONFIG = require('config/config') //获取URL配置
 
-Vue.use(VueResource) //注册VueResource
+Vue.use(VueResource)									//注册VueResource
 
 // HTTP相关
 Vue.http.options.crossOrigin = true
@@ -18,8 +18,8 @@ Vue.http.interceptors.push((request, next) => {
 		// 设置定时器，只要触发就立即返回 response ， 并且自定义了 status 和 statusText
 		timeout = setTimeout(() => {
 			next(request.respondWith(request.body, {
-				 status: 502,
-				 statusText: 'Request Timeout'
+				status: 502,
+				statusText: '响应超时'
 			}));
 			request.abort();
 		}, request._timeout);

@@ -12,7 +12,7 @@ var Plugins = [
 	new webpack.DefinePlugin({
 		'process.env': config.dev.env
 	}),
-    // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
+	// https://github.com/glenjamin/webpack-hot-middleware#installation--usage
 	new webpack.optimize.OccurenceOrderPlugin(),
 	new webpack.HotModuleReplacementPlugin(),
 	new webpack.NoErrorsPlugin()

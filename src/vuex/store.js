@@ -1,21 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import showmsg from './models/showmsg'
+import actions from './actions'
 
 Vue.use(Vuex);
 
-const store = new Vuex.store({
-	state:{
-		
+export default new Vuex.Store({
+	modules:{
+		showmsg
 	},
-	actions:{
-		
-	},
-	mutations:{
-		
-	},
-	getters:{
-		
-	}
-})
-
-export default store;
+	actions
+});

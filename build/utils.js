@@ -1,5 +1,5 @@
-var path = require('path')						//引入 nodejs 中的path模块
-var config = require('../config')			//引入开发环境与发布环境配置
+var path = require('path')					//引入 nodejs 中的path模块
+var config = require('../config')				//引入开发环境与发布环境配置
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 //导出assets文件夹路径
@@ -53,7 +53,7 @@ exports.styleLoaders = function (options) {
   for (var extension in loaders) {
     var loader = loaders[extension]
     output.push({
-      //test: new RegExp('\\.' + extension + '$'),
+      test: new RegExp('\\.' + extension + '$'),
       loader: loader
     })
   }
