@@ -16,12 +16,10 @@ html{
 	min-width:1200px;
 }
 body {
-	font-size: 14px;
-	font-family: Microsoft YaHei,SimSun,Arial;
-	background: #fff;
-	line-height: 1.4;
+	font:normal 14/1.4 Arial,Helvetica,Sans-serif,San Francisco,Microsoft Yahei,SimHei;
+	background:#fff;
 	outline: none;
-	color: #000;
+	color: #333;
 }
 
 ul, li {list-style:none;}
@@ -32,11 +30,10 @@ em,i {font-style: normal;}
 
 button, label{cursor: pointer;}
 
-a{
-	outline: none;
+a{outline: none;
 	display: inline-block;
 	text-decoration: none;
-	color: #000;
+	color: #333;
 }
 
 a:hover {text-decoration: underline;}
@@ -55,9 +52,9 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 img,input,textarea,select,button {
+	font-family: Arial,Helvetica,Sans-serif,San Francisco,Microsoft Yahei,SimHei;
 	outline: none;
 	border: 0;
-	font-family:"Microsoft Yahei";
 }
 
 img {vertical-align: top;}
