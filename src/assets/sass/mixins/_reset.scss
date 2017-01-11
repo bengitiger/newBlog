@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/*** reset ***/
+html,body,h1,h2,h3,h4,h5,h6,p,dl,dd,ul,li,ol,form,input,img,textarea,th,tr,td,button,select{
+	box-sizing:content-box;
+	margin: 0;
+	padding:0;
+}
+html{
+	min-height: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: text;
+	user-select: text;
+	position:relative;
+	min-width:1200px;
+}
+body {
+	font-size: 14px;
+	font-family: Microsoft YaHei,SimSun,Arial;
+	background: #fff;
+	line-height: 1.4;
+	outline: none;
+	color: #000;
+}
+
+ul, li {list-style:none;}
+
+h1,h2,h3,h4,h5,h6 {font-weight: normal;}
+
+em,i {font-style: normal;}
+
+button, label{cursor: pointer;}
+
+a{
+	outline: none;
+	display: inline-block;
+	text-decoration: none;
+	color: #000;
+}
+
+a:hover {text-decoration: underline;}
+
+
+a:focus {outline:none;-moz-outline:none;}
+
+button::-moz-focus-inner {border:0;}
+
+table {border-collapse: collapse;}
+
+input[type="radio"], input[type="checkbox"] {
+	position: relative;
+	vertical-align: middle;
+	outline: none;
+}
+
+img,input,textarea,select,button {
+	outline: none;
+	border: 0;
+	font-family:"Microsoft Yahei";
+}
+
+img {vertical-align: top;}
+
+input[type='text']{color: #333;}
+
+textarea {
+	resize: none;
+	overflow: auto;
+	background: none;
+	color: #333;
+}
+
+/* end reset */

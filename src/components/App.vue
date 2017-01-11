@@ -1,11 +1,11 @@
 <template lang="jade">
-	#container
-		headlayout
+	#wrapper
+		navbar
 </template>
 
 <script>
 	import store from 'Vuex/store'
-	import headlayout from 'components/header.vue'
+	import navbar from 'components/header.vue'
 	export default {
 		data(){
 			return {
@@ -13,7 +13,7 @@
 			}
 		},
 		components: {
-			headlayout
+			navbar
 		}
 	}
 </script>
