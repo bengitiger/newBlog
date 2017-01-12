@@ -4,14 +4,18 @@
 		headerbar
 		
 		//中间列表
-		articles
+		#desk
+			articles
+			#paging
+				a.prevPage(hef='javascript:;', @click='prevPage()') 上1页
+				a.nextPage(hef='javascript:;', @click='nextPage()') 下1页
 		
 		//底部
 		footerbar
 </template>
 
 <script>
-	require('sass/header.scss')
+	require('sass/base.scss')
 	import store from 'Vuex/store'
 	import headerbar from 'components/header.vue'
 	import articles from 'components/articlelist.vue'
@@ -26,6 +30,14 @@
 			headerbar,
 			articles,
 			footerbar
+		},
+		method:{
+			prevPage(){
+				console.log(0);
+			},
+			nextPage(){
+				console.log(1);
+			}
 		}
 	}
 </script>

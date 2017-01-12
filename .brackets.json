@@ -1,0 +1,569 @@
+{
+    "sass.enabled": false,
+    "path": {
+        "scss/page/*.scss": {
+            "sass.enabled": false,
+            "sass.compiler": "ruby",
+            "sass.options": {
+                "sourceMap": "",
+                "includePaths": [],
+                "line_comments": false,
+                "sourceComments": false,
+                "outputDir": "../../css/",
+                "outputStyle": "expended"
+            },
+            "brackets-minifier.on-save": false,
+            "linting.collapsed": true,
+            "brackets-git.gitPath": "git"
+        }
+    },
+    "brackets-minifier.on-save-project": false,
+    "brackets-minifier.js-project-minify": true,
+    "brackets-minifier.css-project-minify": true,
+    "brackets-indent-guides.guideColor": "#414141",
+    "brackets-indent-guides.guideStyle": "solid",
+    "brackets-indent-guides.hideFirst": true,
+    "brackets-minifier.css-custom-path": "",
+    "brackets-minifier.project-exclude": "",
+    "brackets-minifier.js-custom-path": "",
+    "brackets-minifier.js-compress": true,
+    "brackets-minifier.js-mangle": true,
+    "dakaraphi.project.filefilter.filterSetActive": "vue",
+    "dakaraphi.project.filefilter.filterSets": [
+        {
+            "name": "vue",
+            "filters": [
+                {
+                    "regex": "\\.js|plugin.xml|\\.html|\\.css|\\.vue|\\.png|\\.jpg|\\.jade|\\.jsx|\\.scss|\\.sass|\\.ts",
+                    "action": "include",
+                    "filterBy": "filename"
+                },
+                {
+                    "regex": "\\.minified|\\.map|vendor.*.js|manifest.*.js|package.json|favicon.png|.js-live-code.js",
+                    "action": "exclude",
+                    "filterBy": "filename"
+                },
+                {
+                    "regex": "node_modules|bin|.metadata|\\.test.|\\.feature",
+                    "action": "exclude",
+                    "filterBy": "directory"
+                }
+            ]
+        }
+    ],
+    "menusManager.store.keys": {
+        "fileopenFolder": [
+            "Q3RybC1BbHQtTw==",
+            false
+        ],
+        "fileliveFilePreview": [
+            "Q3RybC1BbHQtUA==",
+            false
+        ],
+        "fileopen": [
+            "Q3RybC1P",
+            false
+        ],
+        "filenewDoc": [
+            "Q3RybC1O",
+            false
+        ],
+        "filesave": [
+            "Q3RybC1T",
+            false
+        ],
+        "filesaveAll": [
+            "Q3RybC1BbHQtUw==",
+            false
+        ],
+        "filesaveAs": [
+            "Q3RybC1TaGlmdC1T",
+            false
+        ],
+        "fileclose": [
+            "Q3RybC1X",
+            false
+        ],
+        "filecloseall": [
+            "Q3RybC1TaGlmdC1X",
+            false
+        ],
+        "filequit": [
+            "Q3RybC1R",
+            false
+        ],
+        "editindent": [
+            "Q3RybC1d",
+            false
+        ],
+        "editunindent": [
+            "Q3RybC1b",
+            false
+        ],
+        "editlineComment": [
+            "Q3RybC0v",
+            false
+        ],
+        "editblockComment": [
+            "Q3RybC1TaGlmdC0v",
+            false
+        ],
+        "editduplicate": [
+            "Q3RybC1E",
+            false
+        ],
+        "editdeletelines": [
+            "Q3RybC1TaGlmdC1E",
+            false
+        ],
+        "editlineUp": [
+            "Q3RybC1TaGlmdC1VcA==",
+            false
+        ],
+        "editlineDown": [
+            "Q3RybC1TaGlmdC1Eb3du",
+            false
+        ],
+        "editselectLine": [
+            "Q3RybC1M",
+            false
+        ],
+        "editsplitSelIntoLines": [
+            "Q3RybC1BbHQtTA==",
+            false
+        ],
+        "editaddCursorToNextLine": [
+            "QWx0LVNoaWZ0LURvd24=",
+            false
+        ],
+        "editaddCursorToPrevLine": [
+            "QWx0LVNoaWZ0LVVw",
+            false
+        ],
+        "editundo": [
+            "Q3RybC1a",
+            false
+        ],
+        "editredo": [
+            "Q3RybC1Z",
+            false
+        ],
+        "editcut": [
+            "Q3RybC1Y",
+            false
+        ],
+        "editcopy": [
+            "Q3RybC1D",
+            false
+        ],
+        "editpaste": [
+            "Q3RybC1W",
+            false
+        ],
+        "editselectAll": [
+            "Q3RybC1B",
+            false
+        ],
+        "editshowCodeHints": [
+            "Q3RybC1TcGFjZQ==",
+            false
+        ],
+        "martypennerautosavefilesonwindowblurenabled": [
+            "Q3RybC1BbHQtU2hpZnQtVw==",
+            false
+        ],
+        "medrewhjsbeautify": [
+            "Q3RybC1TaGlmdC1M",
+            false
+        ],
+        "showParameterHint": [
+            "Q3RybC1TaGlmdC1TcGFjZQ==",
+            false
+        ],
+        "cmdfindInFiles": [
+            "Q3RybC1TaGlmdC1G",
+            false
+        ],
+        "cmdreplaceInFiles": [
+            "Q3RybC1TaGlmdC1I",
+            false
+        ],
+        "cmdfind": [
+            "Q3RybC1G",
+            false
+        ],
+        "cmdfindNext": [
+            "RjM=",
+            false
+        ],
+        "cmdreplace": [
+            "Q3RybC1I",
+            false
+        ],
+        "cmdfindPrevious": [
+            "U2hpZnQtRjM=",
+            false
+        ],
+        "cmdfindAllAndSelect": [
+            "QWx0LUYz",
+            false
+        ],
+        "cmdaddNextMatch": [
+            "Q3RybC1C",
+            false
+        ],
+        "cmdskipCurrentMatch": [
+            "Q3RybC1TaGlmdC1C",
+            false
+        ],
+        "viewincreaseFontSize": [
+            "Q3RybC09",
+            false
+        ],
+        "viewdecreaseFontSize": [
+            "Q3RybC0t",
+            false
+        ],
+        "viewrestoreFontSize": [
+            "Q3RybC0w",
+            false
+        ],
+        "viewtoggleSidebar": [
+            "Q3RybC1BbHQtSA==",
+            false
+        ],
+        "filepreviewHighlight": [
+            "Q3RybC1TaGlmdC1D",
+            false
+        ],
+        "codefoldingcollapseall": [
+            "QWx0LTE=",
+            false
+        ],
+        "codefoldingexpandall": [
+            "QWx0LVNoaWZ0LTE=",
+            false
+        ],
+        "codefoldingcollapse": [
+            "Q3RybC1BbHQtWw==",
+            false
+        ],
+        "codefoldingexpand": [
+            "Q3RybC1BbHQtXQ==",
+            false
+        ],
+        "navigatetoggleQuickEdit": [
+            "Q3RybC1F",
+            false
+        ],
+        "navigatetoggleQuickDocs": [
+            "Q3RybC1L",
+            false
+        ],
+        "navigatejumptoDefinition": [
+            "Q3RybC1K",
+            false
+        ],
+        "navigategotoFirstProblem": [
+            "Rjg=",
+            false
+        ],
+        "navigatepreviousMatch": [
+            "QWx0LVVw",
+            false
+        ],
+        "navigatenextMatch": [
+            "QWx0LURvd24=",
+            false
+        ],
+        "navigatequickOpen": [
+            "Q3RybC1TaGlmdC1P",
+            false
+        ],
+        "navigategotoDefinition": [
+            "Q3RybC1U",
+            false
+        ],
+        "navigategotoLine": [
+            "Q3RybC1H",
+            false
+        ],
+        "navigatenextDocListOrder": [
+            "Q3RybC1QYWdlRG93bg==",
+            false
+        ],
+        "navigateprevDocListOrder": [
+            "Q3RybC1QYWdlVXA=",
+            false
+        ],
+        "helpsupport": [
+            "RjE=",
+            false
+        ],
+        "debugshowDeveloperTools": [
+            "RjEy",
+            false
+        ],
+        "debugrefreshWindow": [
+            "RjU=",
+            false
+        ],
+        "debugreloadWithoutUserExts": [
+            "U2hpZnQtRjU=",
+            true
+        ],
+        "ioemmetremovetag": [
+            "Q3RybC1TaGlmdC1L",
+            true
+        ],
+        "ioemmettogglecomment": [
+            "Q3RybC1c",
+            false
+        ],
+        "ioemmetwrapwithabbreviation": [
+            "Q3RybC1TaGlmdC1B",
+            true
+        ],
+        "ioemmetupdatetag": [
+            "Q3RybC1TaGlmdC1J",
+            true
+        ],
+        "ioemmetinteractiveexpandabbreviation": [
+            "Q3RybC1BbHQtU2hpZnQtRW50ZXI=",
+            true
+        ],
+        "djbbracketsgulpgulp": [
+            "QWx0LUc=",
+            true
+        ],
+        "filerename": [
+            "RjI=",
+            false
+        ]
+    },
+    "menusManager.store.menus": {
+        "context": {
+            "workingset-context-menu": {
+                "cmd.findInSubtree": false,
+                "cmd.replaceInSubtree": false,
+                "file.save": false,
+                "file.saveAs": false,
+                "file.rename": false,
+                "file.close": false,
+                "navigate.showInOS": false,
+                "navigate.showInFileTree": false,
+                "file.close_below": false,
+                "file.close_others": false,
+                "file.close_above": false
+            },
+            "workingset-configuration-menu": {
+                "cmd.sortWorkingSetByAdded": false,
+                "cmd.sortWorkingSetByName": false,
+                "cmd.sortWorkingSetByType": false,
+                "cmd.sortWorkingSetToggleAuto": false
+            },
+            "splitview-menu": {
+                "cmd.splitViewNone": false,
+                "cmd.splitViewVertical": false,
+                "cmd.splitViewHorizontal": false
+            },
+            "project-context-menu": {
+                "file.refresh": false,
+                "cmd.findInSubtree": false,
+                "cmd.replaceInSubtree": false,
+                "file.newFile": false,
+                "file.newFolder": false,
+                "file.rename": false,
+                "file.delete": false,
+                "navigate.showInOS": false
+            },
+            "editor-context-menu": {
+                "navigate.toggleQuickEdit": false,
+                "navigate.toggleQuickDocs": false,
+                "edit.selectAll": false,
+                "sachin.clicktogotodefinition.forward": false,
+                "sachin.clicktogotodefinition.backward": false,
+                "me.drewh.jsbeautifyContextual": false,
+                "searchin.MDN": false,
+                "searchin.WebPlatform": false
+            },
+            "inline-editor-context-menu": {
+                "navigate.toggleQuickEdit": false,
+                "edit.selectAll": false,
+                "navigate.previousMatch": false,
+                "navigate.nextMatch": false
+            },
+            "hirse-outline-context-menu": {
+                "hirse.outline.unnamed": false,
+                "hirse.outline.args": false,
+                "hirse.outline.sort": false,
+                "hirse.outline.indent": false
+            }
+        },
+        "file-menu": {
+            "file.extensionManager": true,
+            "file.openFolder": false,
+            "file.projectSettings": false,
+            "file.liveFilePreview": false,
+            "file.toggleLivePreviewMB": false,
+            "file.open": false,
+            "file.newDoc": true,
+            "file.save": true,
+            "file.saveAll": true,
+            "file.saveAs": false,
+            "file.close": true,
+            "file.close_all": true,
+            "file.quit": true,
+            "new-window.newWindow": false,
+            "insya.newhtml5": true,
+            "vue.create.execute": false
+        },
+        "edit-menu": {
+            "edit.indent": true,
+            "edit.unindent": true,
+            "edit.lineComment": false,
+            "edit.blockComment": false,
+            "edit.duplicate": true,
+            "edit.deletelines": true,
+            "edit.lineUp": true,
+            "edit.lineDown": true,
+            "edit.selectLine": true,
+            "edit.splitSelIntoLines": true,
+            "edit.addCursorToNextLine": true,
+            "edit.addCursorToPrevLine": true,
+            "edit.undo": true,
+            "edit.redo": true,
+            "edit.cut": true,
+            "edit.copy": true,
+            "edit.paste": true,
+            "edit.selectAll": true,
+            "edit.autoCloseBrackets": false,
+            "edit.showCodeHints": false,
+            "martypenner.autosave-files-on-window-blur.enabled": false,
+            "me.drewh.jsbeautify": false,
+            "me.drewh.jsbeautify.autosave": false,
+            "showParameterHint": false
+        },
+        "find-menu": {
+            "cmd.findInFiles": false,
+            "cmd.replaceInFiles": false,
+            "cmd.find": true,
+            "cmd.findNext": false,
+            "cmd.replace": true,
+            "cmd.findPrevious": false,
+            "cmd.findAllAndSelect": false,
+            "cmd.addNextMatch": true,
+            "cmd.skipCurrentMatch": true
+        },
+        "view-menu": {
+            "view.increaseFontSize": true,
+            "view.decreaseFontSize": true,
+            "view.restoreFontSize": true,
+            "view.themesOpenSetting": false,
+            "view.toggleLineNumbers": true,
+            "view.toggleActiveLine": true,
+            "view.toggleWordWrap": false,
+            "view.toggleCodeInspection": true,
+            "cmd.splitViewNone": false,
+            "cmd.splitViewVertical": false,
+            "cmd.splitViewHorizontal": true,
+            "view.toggleSidebar": true,
+            "file.previewHighlight": true,
+            "view.enableQuickView": true,
+            "codefolding.collapse.all": true,
+            "codefolding.expand.all": true,
+            "codefolding.collapse": true,
+            "codefolding.expand": true,
+            "quicksearch.toggle": false,
+            "menus.manager": false,
+            "preferencesui.execute": false,
+            "lkcampbell.toggleIndentGuides": true
+        },
+        "navigate-menu": {
+            "navigate.toggleQuickEdit": true,
+            "navigate.toggleQuickDocs": true,
+            "navigate.jumptoDefinition": false,
+            "navigate.gotoFirstProblem": true,
+            "navigate.previousMatch": true,
+            "navigate.nextMatch": true,
+            "navigate.newRule": true,
+            "navigate.quickOpen": false,
+            "navigate.gotoDefinition": false,
+            "navigate.gotoLine": false,
+            "navigate.nextDoc": false,
+            "navigate.prevDoc": false,
+            "navigate.nextDocListOrder": true,
+            "navigate.prevDocListOrder": true,
+            "navigate.showInFileTree": true,
+            "PreferencesforCustomWorkforBrackets": false
+        },
+        "help-menu": {
+            "help.checkForUpdate": false,
+            "help.howToUseBrackets": true,
+            "help.support": true,
+            "help.suggest": false,
+            "help.releaseNotes": true,
+            "help.getInvolved": false,
+            "help.showExtensionsFolder": false,
+            "help.homepage": true,
+            "help.twitter": true,
+            "help.about": true
+        },
+        "debug-menu": {
+            "file.openKeyMap": false,
+            "debug.showDeveloperTools": false,
+            "debug.refreshWindow": true,
+            "debug.reloadWithoutUserExts": true,
+            "debug.newBracketsWindow": true,
+            "debug.runUnitTests": true,
+            "debug.showPerfData": true,
+            "debug.openBracketsSource": true,
+            "debug.switchLanguage": false,
+            "debug.showErrorsInStatusBar": false,
+            "debug.enableNodeDebugger": true,
+            "debug.logNodeState": true,
+            "debug.restartNode": true,
+            "debug.openPrefsInSplitView": false
+        },
+        "io.emmet.EmmetMainMenu": {
+            "io.emmet.remove_tag": false,
+            "io.emmet.toggle_comment": false,
+            "io.emmet.wrap_with_abbreviation": false,
+            "io.emmet.update_tag": false,
+            "io.emmet.interactive_expand_abbreviation": false,
+            "io.emmet.enabled": false,
+            "io.emmet.preferences": true
+        },
+        "djb.gulp-menu": {
+            "djb.brackets-gulp.gulp": true,
+            "djb.brackets-gulp.ftp": false,
+            "djb.brackets-gulp.js": false,
+            "djb.brackets-gulp.adminjs": false,
+            "djb.brackets-gulp.sass": false,
+            "djb.brackets-gulp.css": false,
+            "djb.brackets-gulp.copy:images": false,
+            "djb.brackets-gulp.webpack": false,
+            "djb.brackets-gulp.watch": false,
+            "djb.brackets-gulp.vue:watch": false,
+            "djb.brackets-gulp.clear": false
+        }
+    },
+    "typescript": {
+        "target": "ES5",
+        "module": "AMD",
+        "noImplicitAny": true,
+        "projects": {
+            "project1": {
+                "sources": [
+                    "project1/src/**/*.ts"
+                ]
+            },
+            "project2": {
+                "sources": [
+                    "project2/src/**/*.ts"
+                ],
+                "target": "es3"
+            }
+        }
+    }
+}
