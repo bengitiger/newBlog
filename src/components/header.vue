@@ -8,6 +8,8 @@
 					router-link(to="/mobile") 移动开发
 				li
 					router-link(to="/jslab") JS实验室
+				li
+					router-link(to="/login") 登录
 					
 </template>
 

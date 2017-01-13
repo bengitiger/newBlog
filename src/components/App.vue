@@ -3,6 +3,9 @@
 		//头部
 		headerbar
 		
+		.view
+			router-view
+		
 		//中间列表
 		#desk
 			articles
