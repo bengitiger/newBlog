@@ -116,17 +116,11 @@ pre{white-space:pre-wrap !important;}
 
 .layer, .layermask{position: fixed;}
 
-.fade-enter-active, .fade-leave-active{
-	-webkit-transition:opacity .3s linear;
-	transition:opacity .3s linear;
-	z-index:80;
+.fade-enter-active, .fade-leave-active {
+  transition:opacity .2s;
 }
-
-.fade-leave-active, .fade-enter{opacity:0;}
-
-.login.fade-leave-active{
-	background: #fff;
-	#signinForm{display:none;}
+.fade-enter, .fade-leave-to {
+  opacity: 0
 }
 
 .table{
@@ -138,8 +132,8 @@ pre{white-space:pre-wrap !important;}
 //header
 #headerbar{
 	line-height: 20px;
-	background:#f8f8f8;
-	border:1px solid #e7e7e7;
+	//background:#f8f8f8;
+	border-bottom:1px solid #e7e7e7;
 	
 	.wrap{
 		width:80%;
@@ -150,13 +144,20 @@ pre{white-space:pre-wrap !important;}
 	.nav{
 		li{display:inline-block;
 			vertical-align:top;
+			line-height:60px;
+			margin-left:20px;
+			margin-right:20px;
 		}
-		a{display:block;
-			padding:15px 20px;
+		a{display:inline;
+			padding-bottom:3px;
+			border-bottom:3px solid transparent;
 			font-size:16px;
-			color:#777;
+			color:#34495e;
 			&:hover{color:#333;
 				text-decoration:none;
+			}
+			&.active{
+				border-bottom: 3px solid #42b983;
 			}
 		}
 	}
@@ -196,3 +197,57 @@ pre{white-space:pre-wrap !important;}
 		
 	}
 }
+
+#login{
+	margin:70px 0 30px;
+	min-height: 520px;
+	.signTitle{
+		text-align:center;
+		line-height:60px;
+	}
+	.remark{
+		max-width: 600px;
+		margin: 100px auto 0;
+		text-align:center;
+		a{color: #42b983;}
+	}
+}
+
+#signBox{
+	width: 260px;
+	padding:20px;
+	margin: 0 auto;
+	background:#fafafa;
+	border:1px solid #e7e7e7;
+	border-radius:3px;
+	.explain{color:#777;}
+	.inputBox{
+		background:#fff;
+		border:1px solid #e7e7e7;
+		border-radius:3px;
+		padding:7px;
+		margin:7px 0;
+	}
+	input{
+		height: 20px;
+		line-height: 20px;
+		font-size:14px;
+	}
+	.signBtn{
+		display:block;
+		height:40px;
+		line-height:40px;
+		text-align:center;
+		background:#42b983;
+		text-decoration:none;
+		border-radius:3px;
+		margin-top:20px;
+		font-size:20px;
+		color:#fff;
+		&:hover{background:#25a56b;}
+	}
+}
+
+
+
+

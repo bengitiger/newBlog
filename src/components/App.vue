@@ -3,15 +3,8 @@
 		//头部
 		headerbar
 		
-		.view
+		transition(:name='transitionName')
 			router-view
-		
-		//中间列表
-		#desk
-			articles
-			#paging
-				a.prevPage(hef='javascript:;', @click='prevPage()') 上1页
-				a.nextPage(hef='javascript:;', @click='nextPage()') 下1页
 		
 		//底部
 		footerbar
@@ -21,18 +14,23 @@
 	require('sass/base.scss')
 	import store from 'Vuex/store'
 	import headerbar from 'components/header.vue'
-	import articles from 'components/articlelist.vue'
 	import footerbar from 'components/footer.vue'
 	export default {
 		data(){
 			return {
-				
+				transitionName:'fade'
 			}
 		},
 		components: {
 			headerbar,
-			articles,
 			footerbar
+		},
+		watch: {
+			/*'$route' (to, from) {
+				const toDepth = to.path.split('/').length
+				const fromDepth = from.path.split('/').length
+				this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+			}*/
 		},
 		method:{
 			prevPage(){

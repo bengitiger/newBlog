@@ -3,7 +3,7 @@
 		.wrap
 			ul.nav
 				li
-					router-link(to="/") 首页
+					router-link(to="/", exact) 首页
 				li
 					router-link(to="/mobile") 移动开发
 				li
