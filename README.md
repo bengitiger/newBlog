@@ -1,2 +1,2 @@
 # newBlog
-base in vue2.x
+build with vue 2.x && webpack && vue-router 2.x && ...
