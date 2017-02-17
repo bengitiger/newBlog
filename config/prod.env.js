@@ -1,4 +1,4 @@
-//生产环境配置
+//鐢熶骇鐜閰嶇疆
 module.exports = {
   NODE_ENV: '"production"'
 }

@@ -214,13 +214,15 @@ pre{white-space:pre-wrap !important;}
 }
 
 #signBox{
-	width: 260px;
+	width: 260px;		
 	padding:20px;
 	margin: 0 auto;
 	background:#fafafa;
 	border:1px solid #e7e7e7;
 	border-radius:3px;
-	.explain{color:#777;}
+	.explain{color:#777;
+		&.wrongfield{color:red;}
+	}
 	.inputBox{
 		background:#fff;
 		border:1px solid #e7e7e7;

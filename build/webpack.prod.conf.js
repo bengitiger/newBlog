@@ -7,9 +7,7 @@ var merge = require('webpack-merge')
 var webpackBaseConfig = require('./webpack.base.conf')
 var webpackHtmlPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require("extract-text-webpack-plugin")
-var env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : config.build.env
+var env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
 
 //正式环境多入口打包
 var Plugins = [
@@ -48,7 +46,7 @@ var Plugins = [
 
 // add hot-reload related code to entry chunks
 Object.keys(webpackBaseConfig.entry).forEach(function (name) {
-	var plugin = new webpackBaseConfig({
+	var plugin = new webpackHtmlPlugin({
 		filename: name + '.html',
 		template: name + '.html',
 		inject: true,

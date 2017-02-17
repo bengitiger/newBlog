@@ -1,4 +1,4 @@
-﻿//vue build 项目配置
+//vue build 项目配置
 // https://github.com/shelljs/shelljs
 require('shelljs/global')
 env.NODE_ENV = 'production'

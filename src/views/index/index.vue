@@ -19,14 +19,6 @@
 		components: {
 			articles
 		},
-		vuex:{
-			getters:{
-				
-			},
-			actions:{
-				
-			}
-		},
 		mounted(){
 			this.$nextTick(()=>{
 				

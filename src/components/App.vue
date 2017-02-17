@@ -1,5 +1,6 @@
 <template lang="jade">
 	#wrapper
+		p(style='text-align:center;line-height:40px;border-bottom:1px solid #e7e7e7;') 旧版博客请访问: &emsp;<em style='color:#42b983'>https://</em>keydone.github.io/blog/backup
 		//头部
 		headerbar
 		
@@ -12,7 +13,7 @@
 
 <script>
 	require('sass/base.scss')
-	import store from 'Vuex/store'
+	import store from 'store'
 	import headerbar from 'components/header.vue'
 	import footerbar from 'components/footer.vue'
 	export default {

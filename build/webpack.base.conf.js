@@ -38,11 +38,12 @@ module.exports = {
 			'js': path.resolve(__dirname, "../src/assets/js"),
 			'sass': path.resolve(__dirname, "../src/assets/sass"),
 			'components': path.resolve(__dirname, "../src/components"),
+			'stores': path.resolve(__dirname, "../src/store/models"),
 			'ui': path.resolve(__dirname, "../src/components/ui"),
 			'plugin': path.resolve(__dirname, "../src/plugin"),
 			'views': path.resolve(__dirname, "../src/views"),
 			'utils': path.resolve(__dirname, "../src/utils"),
-			'Vuex': path.resolve(__dirname, "../src/vuex"),
+			'store': path.resolve(__dirname, "../src/store"),
 			'dist': path.resolve(__dirname, "../dist")
 		}
 	},
