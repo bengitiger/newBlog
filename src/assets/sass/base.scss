@@ -194,13 +194,13 @@ pre{white-space:pre-wrap !important;}
 		&.active{display:block;}
 	}
 	li{
-		
+		padding: 10px;
 	}
 }
 
 #login{
-	margin:70px 0 30px;
-	min-height: 520px;
+	padding:70px 0 30px;
+	min-height: 575px;
 	.signTitle{
 		text-align:center;
 		line-height:60px;
