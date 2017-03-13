@@ -1,5 +1,6 @@
 <template lang="jade">
 	nav#headerbar
+		p(style='text-align:center;line-height:40px;border-bottom:1px solid #e7e7e7;') 旧版博客请访问: &emsp;<em style='color:#42b983'>https://</em>keydone.github.io/blog/backup
 		.wrap
 			ul.nav
 				li
