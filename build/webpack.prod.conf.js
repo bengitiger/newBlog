@@ -21,7 +21,7 @@ var Plugins = [
 	}),
 	new webpack.optimize.OccurenceOrderPlugin(),
 	// extract css into its own file
-	new ExtractTextPlugin(utils.assetsPath('css/[name].[contenthash].css')),
+	new ExtractTextPlugin(utils.assetsPath('css/[name].css')),	//[name].[contenthash]
 	// split vendor js into its own file
 	new webpack.optimize.CommonsChunkPlugin({
 		name: 'vendor',
@@ -72,8 +72,8 @@ var webpackConfig = merge(webpackBaseConfig, {
 	devtool: config.build.productionSourceMap ? '#source-map' : false,
 	output: {
 		path: config.build.assetsRoot,
-		filename: utils.assetsPath('js/[name].[chunkhash].js'),
-		chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+		filename: utils.assetsPath('js/[name].js'),	//[name].[chunkhash]
+		chunkFilename: utils.assetsPath('js/[id].js')	//[id].[chunkhash]
 	},
 	vue: {
 		loaders: utils.cssLoaders({

@@ -12,6 +12,7 @@
 	const article = resolve => require(['views/article/article.vue'], resolve)
 	const jslab = resolve => require(['views/index/jslab.vue'], resolve)
 	const mobile = resolve => require(['views/index/mobile.vue'], resolve)
+	const rootPath='/blog'
 
 	Vue.use(VueRouter);					 	//注册VueRouter
 	Vue.use(VueCookie);						//注册cookie
@@ -32,31 +33,31 @@
 		mode : 'history',
 		routes : [
 			{
-				path:'/blog',
+				path:rootPath,
 				rootName: '首页',
 				component:index
 			},
 			{
-				path:'/blog/logined',
+				path:rootPath+'/logined',
 				rootName: '首页',
 				component:index,
 				meta: { requiresAuth: true }
 			},{
-				path:'/blog/login',
+				path:rootPath+'/login',
 				component:login
 			},{
-				path:'/blog/article',
+				path:rootPath+'/article',
 				rootName: '文章详情',
 				rootNamePath: '/',
 				component:article
 			},{
-				path:'/blog/jslab',
+				path:rootPath+'/jslab',
 				component:jslab
 			},{
-				path:'/blog/mobile',
+				path:rootPath+'/mobile',
 				component:mobile
 			},{
-				path:'/blog/*',
+				path:rootPath+'/*',
 				component: require('components/404.vue')
 			}
 		]
@@ -67,7 +68,7 @@
 			const userSessionId=Vue.cookie.get('sessionId');
 			if (!userSessionId) {
 	      next({
-	        path: '/blog/login',
+	        path: rootPath+'/login',
 	        query: { redirect: to.fullPath }
 	      })
 	    } else {

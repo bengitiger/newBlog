@@ -33,7 +33,7 @@
         mounted(){
             this.$nextTick(()=>{
                 setTimeout(()=>{
-                    this.load='loaded'
+                    this.load='loaded';
                 })
                 
             })
@@ -45,7 +45,7 @@
                 this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
             }*/
         },
-        method:{
+        methods:{
             
         }
     }

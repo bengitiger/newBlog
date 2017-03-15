@@ -1,8 +1,8 @@
 
 import Vue from 'vue'
 import Vuex from 'vuex'
-import login from './models/login'
-import showmsg from './models/showmsg'
+import login from './modules/login'
+import showmsg from './modules/showmsg'
 
 Vue.use(Vuex);
 

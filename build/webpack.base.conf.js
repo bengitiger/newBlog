@@ -38,7 +38,7 @@ module.exports = {
 			'js': path.resolve(__dirname, "../src/assets/js"),
 			'sass': path.resolve(__dirname, "../src/assets/sass"),
 			'components': path.resolve(__dirname, "../src/components"),
-			'stores': path.resolve(__dirname, "../src/store/models"),
+			'stores': path.resolve(__dirname, "../src/store/modules"),
 			'ui': path.resolve(__dirname, "../src/components/ui"),
 			'plugin': path.resolve(__dirname, "../src/plugin"),
 			'views': path.resolve(__dirname, "../src/views"),
