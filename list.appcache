@@ -1,0 +1,20 @@
+CACHE MANIFEST
+
+# v2017030201
+
+#需要缓存的文件
+CACHE:
+logo.png
+static/img/header_img.jpg
+static/img/001.jpg
+static/img/002.jpg
+static/js/vendor.js
+static/js/manifest.js
+static/js/index.js
+
+
+#不需要缓存的文件
+NETWORK:
+*
+#无法访问页面
+FALLBACK:

@@ -15,6 +15,7 @@
 <script>
     require('sass/base.scss')
     import store from 'store'
+    import iconfont from 'js/iconfont'
     import sidebar from 'components/sidebar.vue'
     import headerbar from 'components/header.vue'
     import footerbar from 'components/footer.vue'

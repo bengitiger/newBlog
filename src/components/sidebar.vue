@@ -7,22 +7,27 @@
             .avatarBox
                 .avatar
                     img(src='../assets/images/header_img.jpg')
-                p.userName keydone
+                p.userName key done
             ul.menuList(@click='asideToggle')
                 li
-                    i.iconfont.icon-home
+                    svg.icon(aria-hidden="true")
+                        use(xlink:href="#icon-index")
                     router-link(to="/blog", exact) 首页
                 li
-                    i.iconfont.icon-mobile
+                    svg.icon(aria-hidden="true")
+                        use(xlink:href="#icon-mobile")
                     router-link(to="/blog/mobile") 移动开发
                 li
-                    i.iconfont.icon-project
+                    svg.icon(aria-hidden="true")
+                        use(xlink:href="#icon-project")
                     router-link(to="/blog/jslab") JS实验室
                 li(v-if='!loginState')
-                    i.iconfont.icon-login
+                    svg.icon(aria-hidden="true")
+                        use(xlink:href="#icon-login")
                     router-link(to="/blog/login") 登录
             .logstatus(v-if='loginState')
-                i.iconfont.icon-logout
+                svg.icon(aria-hidden="true")
+                    use(xlink:href="#icon-logout")
                 a.inblock.cfff(@click='logout', href='javascript:;') 退出登录
 
 </template>
