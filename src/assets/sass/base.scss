@@ -132,10 +132,15 @@ pre{white-space:pre-wrap !important;}
 }
 
 #wrapper{
+    min-height: 650px;
     padding-bottom: 150px;
-    transition-duration: .3s;
+    transition-duration: .2s;
+    transform: translateX(-100px);
     opacity: 0;
-    &.loaded{opacity:1;}
+    &.loaded{opacity:1;
+        transform: translateX(0);
+        #footer{opacity:1;}
+    }
 }
 
 //header
@@ -286,6 +291,7 @@ pre{white-space:pre-wrap !important;}
     line-height:24px;
     text-align:center;
     background:#727f80;
+    opacity:0;
 }
 
 //desk
@@ -304,7 +310,7 @@ pre{white-space:pre-wrap !important;}
             content:'';
             position:absolute;
             bottom:-10px;left:0;
-            right:0;height:2px;
+            right:0;height:1px;
             background:#d6d6d6;
             box-shadow:0 1px 3px 0 rgba(0,0,0,.1);
             clear:both;
@@ -312,6 +318,7 @@ pre{white-space:pre-wrap !important;}
         .title{
             height: 40px;
             line-height:40px;
+            overflow: hidden;
             font-size:30px;
         }
         .number{
@@ -326,6 +333,13 @@ pre{white-space:pre-wrap !important;}
             float:left;
             font-size:36px;
             margin-right:10px;
+        }
+        .icon-less, .icon-css{
+            font-size:44px;
+        }
+        .icon-nodejs{
+            font-size:94px;
+            margin-top:-27px;
         }
         .about{
             color:#777;
@@ -343,9 +357,7 @@ pre{white-space:pre-wrap !important;}
 
 
 
-#login{
-    padding:70px 0 30px;
-    min-height: 575px;
+#login{padding:70px 0 30px;
     .signTitle{
         text-align:center;
         line-height:60px;

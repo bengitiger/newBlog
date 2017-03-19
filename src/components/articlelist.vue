@@ -10,7 +10,7 @@
                     router-link(:to="'/blog/article/' + item.url", target='_blank') {{item.title}}
                 small.about In <em class='mark classes'>{{item.classes}}</em> on <em class='mark date'>{{item.date}}</em> by {{item.author}}
                 .summary {{item.summary}}
-                    img.img(src='../assets/img/001.jpg')
+                    //img.img(src='../assets/img/001.jpg')
 
 
 </template>
