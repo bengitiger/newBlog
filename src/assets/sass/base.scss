@@ -175,6 +175,27 @@ pre{white-space:pre-wrap !important;}
             }
         }
     }
+
+    .searchBox{
+        height: 30px;
+        border:1px solid #d6d6d6;
+        border-radius: 7px;
+        vertical-align:top;
+        margin-top:14px;
+        margin-left:10px;
+        overflow: hidden;
+        .searchField{
+            height: 24px;
+            line-height:24px;
+            padding:3px 10px;
+            width: 160px;
+        }
+        .icon-search{
+            font-size: 22px;
+            position:relative;
+            top:3px;color:#32b16c;
+        }
+    }
 }
 
 #sidebar{position:relative; z-index: 10001;
@@ -354,7 +375,10 @@ pre{white-space:pre-wrap !important;}
     
 }
 
-
+#editor_article{
+    width: 1080px;
+    margin:20px auto;
+}
 
 
 #login{padding:70px 0 30px;

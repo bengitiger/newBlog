@@ -96,6 +96,11 @@
                     {tag:'location', url:'location', title:'location'}
                 ]
             }
+        },
+        mounted () {
+            this.$nextTick(()=>{
+                
+            })
         }
     }
 </script>

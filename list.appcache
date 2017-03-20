@@ -1,6 +1,6 @@
 CACHE MANIFEST
 
-# v2017030201
+# v2017030202
 
 #需要缓存的文件
 CACHE:
@@ -11,6 +11,7 @@ static/img/002.jpg
 static/js/vendor.js
 static/js/manifest.js
 static/js/index.js
+static/js/iconfont.js
 
 
 #不需要缓存的文件

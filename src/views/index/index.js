@@ -4,7 +4,6 @@
 	import VueRouter from 'vue-router'				//引入vue路由插件
 	import VueCookie from 'vue-cookie'				//引入vue cookie
 	import { sync } from 'vuex-router-sync'		//同步vuex与路由的状态
-	import lazy from 'vue-lazy-component'			//引入组件懒加载
 	import App from 'components/App.vue'
 
 	const index = resolve => require(['views/index/index.vue'], resolve)
@@ -12,11 +11,12 @@
 	const article = resolve => require(['views/article/article.vue'], resolve)
 	const jslab = resolve => require(['views/index/jslab.vue'], resolve)
 	const mobile = resolve => require(['views/index/mobile.vue'], resolve)
-	const rootPath='/blog'
+	const ue = resolve => require(['views/ueditor/ueditor.vue'], resolve)
+	const rootPath='/blog';
 
 	Vue.use(VueRouter);					 	//注册VueRouter
 	Vue.use(VueCookie);						//注册cookie
-	Vue.use(lazy);
+
 
 	//创建路由
 	/*
@@ -56,6 +56,9 @@
 			},{
 				path:rootPath+'/mobile',
 				component:mobile
+			},{
+				path:rootPath+'/ue',
+				component:ue
 			},{
 				path:rootPath+'/*',
 				component: require('components/404.vue')

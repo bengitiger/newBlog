@@ -35,6 +35,7 @@ module.exports = {
 		alias: {
 			'src': path.resolve(__dirname, '../src'),
 			'config': path.resolve(__dirname, "../config"),
+			'static': path.resolve(__dirname, '../static'),
 			'js': path.resolve(__dirname, "../src/assets/js"),
 			'sass': path.resolve(__dirname, "../src/assets/sass"),
 			'components': path.resolve(__dirname, "../src/components"),
@@ -81,10 +82,10 @@ module.exports = {
 			}
 		}]
 	},
-	/* 其他插件
+	/* 其他插件 */
 	externals: {
-	"BMap": "BMap"
-	},*/
+		"UE": "window.UE"
+	},
 	vue : {
 		loaders: utils.cssLoaders()
 	}
