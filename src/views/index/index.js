@@ -12,7 +12,6 @@
 	const jslab = resolve => require(['views/index/jslab.vue'], resolve)
 	const mobile = resolve => require(['views/index/mobile.vue'], resolve)
 	const ue = resolve => require(['views/ueditor/ueditor.vue'], resolve)
-	const rootPath='/blog';
 
 	Vue.use(VueRouter);					 	//注册VueRouter
 	Vue.use(VueCookie);						//注册cookie
@@ -33,34 +32,34 @@
 		mode : 'history',
 		routes : [
 			{
-				path:rootPath,
+				path:'/',
 				rootName: '首页',
 				component:index
 			},
 			{
-				path:rootPath+'/logined',
+				path:'/logined',
 				rootName: '首页',
 				component:index,
 				meta: { requiresAuth: true }
 			},{
-				path:rootPath+'/login',
+				path:'/login',
 				component:login
 			},{
-				path:rootPath+'/article',
+				path:'/article',
 				rootName: '文章详情',
 				rootNamePath: '/',
 				component:article
 			},{
-				path:rootPath+'/jslab',
+				path:'/jslab',
 				component:jslab
 			},{
-				path:rootPath+'/mobile',
+				path:'/mobile',
 				component:mobile
 			},{
-				path:rootPath+'/ue',
+				path:'/ue',
 				component:ue
 			},{
-				path:rootPath+'/*',
+				path:'/*',
 				component: require('components/404.vue')
 			}
 		]

@@ -7,7 +7,7 @@
                     svg.icon(:class="'icon-' + item.tag", aria-hidden="true")
                         use(:xlink:href="'#icon-' + item.tag")
                     //i.iconfont(:class="'icon-' + item.tag")
-                    router-link(:to="'/blog/article/' + item.url", target='_blank') {{item.title}}
+                    router-link(:to="'/article/' + item.url", target='_blank') {{item.title}}
                 small.about In <em class='mark classes'>{{item.classes}}</em> on <em class='mark date'>{{item.date}}</em> by {{item.author}}
                 .summary {{item.summary}}
                     //img.img(src='../assets/img/001.jpg')

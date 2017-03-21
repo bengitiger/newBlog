@@ -1,18 +1,22 @@
 CACHE MANIFEST
 
-# v2017030202
+# v2017030204
 
 #需要缓存的文件
 CACHE:
 logo.png
-static/img/header_img.jpg
-static/img/001.jpg
-static/img/002.jpg
-static/js/vendor.js
-static/js/manifest.js
-static/js/index.js
-static/js/iconfont.js
-
+img/header_img.jpg
+img/001.jpg
+img/002.jpg
+js/vendor.js
+js/manifest.js
+js/index.js
+static/iconfont.js
+static/ueditor-1.4.3.3/ueditor.all.min.js
+static/ueditor-1.4.3.3/ueditor.parse.min.js
+static/ueditor-1.4.3.3/ueditor.config.min.js
+static/ueditor-1.4.3.3/lang/en/en.js
+static/ueditor-1.4.3.3/lang/zh-cn/zh-cn.js
 
 #不需要缓存的文件
 NETWORK:

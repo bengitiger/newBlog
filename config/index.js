@@ -9,8 +9,8 @@ module.exports = {
 		env: require('./prod.env'),
 		index: path.resolve(__dirname, '../dist/index.html'),
 		assetsRoot: path.resolve(__dirname, '../dist'),
-		assetsSubDirectory: 'blog/static',
-		assetsPublicPath: '/',
+		assetsSubDirectory: '',
+		assetsPublicPath: '',
 		productionSourceMap: false,
 		// 默认不启用 Gzip off by default as many popular static hosts such as Surge or Netlify already gzip all static assets for you.
 		// 在开设 Gip 为 `true` 前请确保服务端安装以下模块:

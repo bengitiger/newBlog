@@ -9,8 +9,7 @@
             ueditorPath: {
                 // UEditor 代码的路径
                 type: String,
-                default: '/static/ueditor-1.4.3.3/',
-                default: '/blog/static/static/ueditor-1.4.3.3/'
+                default: '/static/ueditor-1.4.3.3/'
             },
             ueditorConfig: {
                 // UEditor 配置项
@@ -22,10 +21,10 @@
         },
         data() {
             return {
+                instance: null,
                 // 为了避免麻烦，每个编辑器实例都用不同的 id
                 //randomId: 'editor_' + (Math.random() * 100000000000000000),
                 randomId:'editor_article',
-                instance: null,
                 // scriptTagStatus -> 0:代码未加载，1:两个代码依赖加载了一个，2:两个代码依赖都已经加载完成
                 scriptTagStatus: 0
             };
@@ -55,12 +54,12 @@
                 if (editorScriptTag === null) {
                     configScriptTag = document.createElement('script');
                     configScriptTag.type = 'text/javascript';
-                    configScriptTag.src = this.ueditorPath + 'ueditor.config.js';
+                    configScriptTag.src = this.ueditorPath + 'ueditor.config.min.js';
                     configScriptTag.id = 'configScriptTag';
             
                     editorScriptTag = document.createElement('script');
                     editorScriptTag.type = 'text/javascript';
-                    editorScriptTag.src = this.ueditorPath + 'ueditor.all.js';
+                    editorScriptTag.src = this.ueditorPath + 'ueditor.all.min.js';
                     editorScriptTag.id = 'editorScriptTag';
                     let s = document.getElementsByTagName('head')[0];
                     s.appendChild(configScriptTag);

@@ -12,19 +12,19 @@
                 li
                     svg.icon(aria-hidden="true")
                         use(xlink:href="#icon-index")
-                    router-link(to="/blog", exact) 首页
+                    router-link(to="", exact) 首页
                 li
                     svg.icon(aria-hidden="true")
                         use(xlink:href="#icon-mobile")
-                    router-link(to="/blog/mobile") 移动开发
+                    router-link(to="/mobile") 移动开发
                 li
                     svg.icon(aria-hidden="true")
                         use(xlink:href="#icon-project")
-                    router-link(to="/blog/jslab") JS实验室
+                    router-link(to="/jslab") JS实验室
                 li(v-if='!loginState')
                     svg.icon(aria-hidden="true")
                         use(xlink:href="#icon-login")
-                    router-link(to="/blog/login") 登录
+                    router-link(to="/login") 登录
             .logstatus(v-if='loginState')
                 svg.icon(aria-hidden="true")
                     use(xlink:href="#icon-logout")

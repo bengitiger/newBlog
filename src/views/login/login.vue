@@ -11,7 +11,7 @@
 
             a.signBtn(href='javascript:;', @click='login') 登录
 
-        p.remark 此页面为登录测试页面, 默认账号是 keydone, 密码是 keydone666, 未登录时直接访问 <router-link to='/blog/logined'>登录成功页面</router-link> 会返回到此登录页面, 使用账号登录成功后会跳转到首页, 欢迎体验~
+        p.remark 此页面为登录测试页面, 默认账号是 keydone, 密码是 keydone666, 未登录时直接访问 <router-link to='/logined'>登录成功页面</router-link> 会返回到此登录页面, 使用账号登录成功后会跳转到首页, 欢迎体验~
         //
 </template>
 
@@ -50,7 +50,7 @@
                 const userSessionId=this.$cookie.get('sessionId');
                 if (userSessionId) {
                     //已登录
-                    this.$router.replace({'path':'/blog'})
+                    this.$router.replace({'path':'/'})
                 }
             });
         },
