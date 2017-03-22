@@ -29,7 +29,7 @@
 
 <script>
     import { mapActions } from 'vuex'
-    import { USER_SIGNIN } from 'stores/login'
+    import { USER_SIGNIN } from '~modules/login'
 
     export default {
         data () {

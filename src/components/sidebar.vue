@@ -34,7 +34,7 @@
 
 <script>
     import { mapActions } from 'vuex'
-    import logout from 'stores/login'
+    import logout from '~modules/login'
 
     export default {
         data(){

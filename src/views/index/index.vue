@@ -7,7 +7,7 @@
 
 <script>
 
-	import articles from 'components/articlelist.vue'
+	import articles from '~components/articlelist.vue'
 	export default {
 		data () {
 			return {

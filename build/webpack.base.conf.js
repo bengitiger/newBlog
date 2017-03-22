@@ -7,6 +7,10 @@ var configs = require('../config/config.js')
 var projectRoot = path.resolve(__dirname, '../')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var entrys = getEntry("./src/views/**/*.js");		//获得入口js文件
+var env = process.env.NODE_ENV
+var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
+var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
+var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 function getEntry(globPath) {
   var entries = {}, basename, tmp;
@@ -33,19 +37,20 @@ module.exports = {
 		fallback: [path.join(__dirname, '../node_modules')],
 		//路径别名
 		alias: {
-			'src': path.resolve(__dirname, '../src'),
-			'config': path.resolve(__dirname, "../config"),
-			'static': path.resolve(__dirname, '../static'),
-			'js': path.resolve(__dirname, "../src/assets/js"),
-			'sass': path.resolve(__dirname, "../src/assets/sass"),
-			'components': path.resolve(__dirname, "../src/components"),
-			'stores': path.resolve(__dirname, "../src/store/modules"),
-			'ui': path.resolve(__dirname, "../src/components/ui"),
-			'plugin': path.resolve(__dirname, "../src/plugin"),
-			'views': path.resolve(__dirname, "../src/views"),
-			'utils': path.resolve(__dirname, "../src/utils"),
-			'store': path.resolve(__dirname, "../src/store"),
-			'dist': path.resolve(__dirname, "../dist")
+			'~src': path.resolve(__dirname, '../src'),
+			'~config': path.resolve(__dirname, "../config"),
+			'~static': path.resolve(__dirname, '../static'),
+			'~assets': path.resolve(__dirname, "../src/assets"),
+			'~js': path.resolve(__dirname, "../src/assets/js"),
+			'~sass': path.resolve(__dirname, "../src/assets/sass"),
+			'~components': path.resolve(__dirname, "../src/components"),
+			'~modules': path.resolve(__dirname, "../src/vuex/modules"),
+			'~ui': path.resolve(__dirname, "../src/components/ui"),
+			'~plugin': path.resolve(__dirname, "../src/plugin"),
+			'~views': path.resolve(__dirname, "../src/views"),
+			'~utils': path.resolve(__dirname, "../src/utils"),
+			'~store': path.resolve(__dirname, "../src/vuex"),
+			'~dist': path.resolve(__dirname, "../dist")
 		}
 	},
 	resolveLoader: {
@@ -87,6 +92,11 @@ module.exports = {
 		"UE": "window.UE"
 	},
 	vue : {
-		loaders: utils.cssLoaders()
-	}
+		loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
+		postcss: [
+			require('autoprefixer')({
+			browsers: ['last 2 versions']
+			})
+		]
+    	}
 }

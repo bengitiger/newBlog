@@ -149,12 +149,10 @@ pre{white-space:pre-wrap !important;}
     background:#fff;
     border-bottom:1px solid #e7e7e7;
     .wrap{
-        width:80%;
+        width:600px;
         margin:0 auto;
-        max-width:1000px;
         position:relative;
     }
-    
     .nav{
         li{display:inline-block;
             vertical-align:top;
@@ -313,6 +311,16 @@ pre{white-space:pre-wrap !important;}
     text-align:center;
     background:#727f80;
     opacity:0;
+}
+
+//404
+#notfound{
+    width: 200px;
+    height:400px;
+    margin:100px auto;
+    text-align:center;
+    .icon{font-size:200px;}
+    .missing{color:#666;}
 }
 
 //desk

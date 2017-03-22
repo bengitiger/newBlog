@@ -6,8 +6,7 @@
 	import { sync } from 'vuex-router-sync'		//同步vuex与路由的状态
 	import App from '~components/App.vue'
 
-	const index = resolve => require(['~views/index/index.vue'], resolve)
-	const login = resolve => require(['~views/login/login.vue'], resolve)
+	const jslab = resolve => require(['~views/jslab/jslab.vue'], resolve)
 	const ue = resolve => require(['~views/ueditor/ueditor.vue'], resolve)
 	const nothing = resolve => require(['~components/404.vue'], resolve)
 
@@ -30,18 +29,8 @@
 		mode : 'history',
 		routes : [
 			{
-				path:'/',
-				rootName: '首页',
-				component:index
-			},
-			{
-				path:'/logined',
-				rootName: '首页',
-				component:index,
-				meta: { requiresAuth: true }
-			},{
-				path:'/login',
-				component:login
+				path:'/jslab',
+				component:jslab
 			},{
 				path:'/ue',
 				component:ue
@@ -69,7 +58,7 @@
 	})
 
 	var app = new Vue({
-	  el: '#app',
+	  el: '#jslab',
 	  router,
 	  store,
 	  ...App

@@ -13,12 +13,12 @@
 </template>
 
 <script>
-    require('sass/base.scss')
-    import store from 'store'
-    import iconfont from 'static/iconfont'
-    import sidebar from 'components/sidebar.vue'
-    import headerbar from 'components/header.vue'
-    import footerbar from 'components/footer.vue'
+    require('~sass/base.scss')
+    import store from '~store'
+    import iconfont from '~static/iconfont'
+    import sidebar from '~components/sidebar.vue'
+    import headerbar from '~components/header.vue'
+    import footerbar from '~components/footer.vue'
     export default {
         data(){
             return {

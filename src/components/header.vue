@@ -18,7 +18,7 @@
 </template>
 
 <script>
-    import login from 'stores/login'
+    import login from '~modules/login'
     
     export default {
         data(){
