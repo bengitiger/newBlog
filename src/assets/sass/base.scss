@@ -180,18 +180,26 @@ pre{white-space:pre-wrap !important;}
         border-radius: 7px;
         vertical-align:top;
         margin-top:14px;
-        margin-left:10px;
         overflow: hidden;
+        float:right;
+        &.extend{
+            .searchField{width:110px;}
+            .icon-search{color:#32b16c;}
+        }
         .searchField{
             height: 24px;
             line-height:24px;
-            padding:3px 10px;
-            width: 160px;
+            padding:3px 7px;
+            width: 35px;
+            transition-duration:.3s;
         }
         .icon-search{
+            cursor:pointer;
             font-size: 22px;
+            transition-duration:.3s;
+            margin-right: 3px;
             position:relative;
-            top:3px;color:#32b16c;
+            top:3px;
         }
     }
 }
