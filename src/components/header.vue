@@ -5,9 +5,9 @@
                 li
                     router-link(to="/", exact) 首页
                 li
-                    router-link(to="/mobile") 移动开发
+                    a(href="/mobile.html") 移动开发
                 li
-                    router-link(to="/jslab") JS实验室
+                    a(href="/jslab.html") JS实验室
                 li(v-if='!loginState')
                     router-link(to="/login") 登录
             .searchBox.inblock

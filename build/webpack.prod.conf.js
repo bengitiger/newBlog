@@ -28,20 +28,47 @@ var Plugins = [
 		minChunks: function (module, count) {
 			// any required modules inside node_modules are extracted to vendor
 			return (
+				(	module.resource && /\.js$/.test(module.resource) && 
+					(
+						module.resource.indexOf( path.join(__dirname, '../node_modules') ) === 0 ||
+						module.resource.indexOf( path.join(__dirname, '../static') ) === 0
+					)
+				)
+			)
+		}
+	}),
+	new webpack.optimize.CommonsChunkPlugin({
+		name: 'vue',
+		minChunks: function (module, count) {
+			// any required modules inside node_modules are extracted to vendor
+			return (
+				(	module.resource && /\.js$/.test(module.resource) && 
+					(
+						module.resource.indexOf( path.join(__dirname, '../node_modules/vue') ) === 0 ||
+						module.resource.indexOf( path.join(__dirname, '../static') ) === 0
+					)
+				)
+			)
+		}
+	}),
+	new webpack.optimize.CommonsChunkPlugin({
+		name: 'iconfont',
+		minChunks: function (module, count) {
+			return (
 				module.resource &&
 				/\.js$/.test(module.resource) &&
 				module.resource.indexOf(
-					path.join(__dirname, '../node_modules')
+					path.join(__dirname, '../static/iconfont')
 				) === 0
 			)
 		}
 	}),
 	// extract webpack runtime and module manifest to its own file in order to
 	// prevent vendor hash from being updated whenever app bundle is updated
-	new webpack.optimize.CommonsChunkPlugin({
+	/*new webpack.optimize.CommonsChunkPlugin({
 		name: 'manifest',
 		chunks: ['vendor']
-	})
+	})*/
 ]
 
 // add hot-reload related code to entry chunks
@@ -50,7 +77,7 @@ Object.keys(webpackBaseConfig.entry).forEach(function (name) {
 		filename: name + '.html',
 		template: name + '.html',
 		inject: true,
-		chunks: [name, 'manifest', 'vendor'],
+		chunks: [name, 'iconfont', 'vue', 'vendor'],
 		minify: {
 			removeComments: true,
 			collapseWhitespace: true,
