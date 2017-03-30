@@ -4,7 +4,6 @@ var glob = require('glob')
 var utils = require('./utils')
 var config = require('../config')
 var configs = require('../config/config.js')
-var projectRoot = path.resolve(__dirname, '../')
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var entrys = getEntry("./src/views/**/*.js");		//获得入口js文件
 var env = process.env.NODE_ENV
@@ -13,7 +12,7 @@ var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap
 var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
 
 function getEntry(globPath) {
-  var entries = {}, basename, tmp;
+	var entries = {}, basename, tmp;
 	glob.sync(globPath).forEach(function (entry) {
 		basename = path.basename(entry, path.extname(entry));
 		entries[basename] = [];
@@ -60,19 +59,26 @@ module.exports = {
 	module : {
 		loaders : [{
 			test: /\.vue$/,
+			exclude: [
+				path.resolve(__dirname, "node_modules"),
+				path.resolve(__dirname, "static")
+			],
 			loader: 'vue'
 		},{
 			test: /\.js$/,
-			exclude: /node_modules|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
+			exclude: /node_modules|static|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
 			loader: 'babel'
 		},{
 			test: /\.json$/,
+			exclude: /node_modules|static|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
 			loader: 'json'
 		},{
 			test: /\.html$/,
+			exclude: /node_modules|static|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
 			loader: 'vue-html'
 		},{
 			test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+			exclude: /node_modules|static|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
 			loader: 'url',
 			query: {
 				limit: 10000,
@@ -80,6 +86,7 @@ module.exports = {
 			}
 		},{
 		test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+			exclude: /node_modules|static|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
 			loader: 'url',
 			query: {
 				limit: 10000,
@@ -95,8 +102,8 @@ module.exports = {
 		loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
 		postcss: [
 			require('autoprefixer')({
-			browsers: ['last 2 versions']
+				browsers: ['last 20 versions']
 			})
 		]
-    	}
+    }
 }

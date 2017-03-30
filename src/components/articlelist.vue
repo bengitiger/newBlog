@@ -9,18 +9,21 @@
                     //i.iconfont(:class="'icon-' + item.tag")
                     router-link(:to="'/article/' + item.url", target='_blank') {{item.title}}
                 small.about In <em class='mark classes'>{{item.classes}}</em> on <em class='mark date'>{{item.date}}</em> by {{item.author}}
-                .summary {{item.summary}}
-                    //img.img(src='../assets/img/001.jpg')
-
+                .summary(v-if='item.src')
+                    .summaryTxt {{item.summary}}
+                    img.img(:src="imgPath + item.src + '.jpg'")
+                .summary(v-else) {{item.summary}}
 
 </template>
 
 <script>
+    const configs=require('../../config/config');
     export default {
         data(){
             return{
+                imgPath : configs.imgPath,
                 articles:[
-                    {tag:'html', url:'html', title:'html', classes:'日常', date:'20170318', author:'keydone', summary:'昨天有个以前的前端同事问我个问题，她说，有个效果写完了，但是调了大半天老是有个bug，就找我瞧瞧。问题描述：图上有个+按钮，功能是点击+就会在前面自动追加上传图像按钮，而每次追加完节点就会自动变成第2张图的样纸。好诡异~'},
+                    {tag:'html', url:'html', title:'html', classes:'日常', date:'20170318', author:'keydone', summary:'昨天有个以前的前端同事问我个问题，她说，有个效果写完了，但是调了大半天老是有个bug，就找我瞧瞧。问题描述：图上有个+按钮，功能是点击+就会在前面自动追加上传图像按钮，而每次追加完节点就会自动变成第2张图的样纸。好诡异~', src:'001'},
                     {tag:'html5', url:'html5', title:'html5'},
                     {tag:'css', url:'css', title:'css'},
                     {tag:'css3', url:'css3', title:'css3'},

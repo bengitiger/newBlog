@@ -7,8 +7,8 @@ module.exports = {
 	//发布环境
 	build: {
 		env: require('./prod.env'),
-		index: path.resolve(__dirname, '../dist/index.html'),
-		assetsRoot: path.resolve(__dirname, '../dist'),
+		index: path.resolve(__dirname, '../blog/index.html'),
+		assetsRoot: path.resolve(__dirname, '../blog'),
 		assetsSubDirectory: '',
 		assetsPublicPath: '',
 		productionSourceMap: false,
