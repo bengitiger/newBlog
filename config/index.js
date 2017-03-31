@@ -32,6 +32,6 @@ module.exports = {
 				}
 			}
 		},
-		cssSourceMap: false
+		cssSourceMap: true
 	}
 }
