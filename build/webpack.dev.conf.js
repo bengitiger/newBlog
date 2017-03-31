@@ -1,14 +1,14 @@
 //webpack 开发配置项
-var path = require('path')						//引入 nodejs 中的path模块
-var utils = require('./utils')					
-var webpack = require('webpack')
-var config = require('../config')
-var merge = require('webpack-merge')
-var webpackBaseConfig = require('./webpack.base.conf')
-var webpackHtmlPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require("extract-text-webpack-plugin")
+const path = require('path'),						//引入 nodejs 中的path模块
+	utils = require('./utils'),					
+	webpack = require('webpack'),
+	config = require('../config'),
+	merge = require('webpack-merge'),
+	webpackBaseConfig = require('./webpack.base.conf'),
+	webpackHtmlPlugin = require('html-webpack-plugin'),
+	ExtractTextPlugin = require("extract-text-webpack-plugin")
 
-var Plugins = [
+let Plugins = [
 	new webpack.DefinePlugin({
 		'process.env': config.dev.env
 	}),

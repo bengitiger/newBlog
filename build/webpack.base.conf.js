@@ -1,15 +1,16 @@
 //webpack 基础配置项
-var path = require('path')						//引入 nodejs 中的path模块
-var glob = require('glob')
-var utils = require('./utils')
-var config = require('../config')
-var configs = require('../config/config.js')
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var entrys = getEntry("./src/views/**/*.js");		//获得入口js文件
-var env = process.env.NODE_ENV
-var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
-var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
-var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
+const path = require('path'),						//引入 nodejs 中的path模块
+	glob = require('glob'),
+	utils = require('./utils'),
+	config = require('../config'),
+	configs = require('../config/config.js'),
+	ExtractTextPlugin = require("extract-text-webpack-plugin"),
+	entries = getEntry("./src/views/**/*.js"),		//获得入口js文件
+	env = process.env.NODE_ENV,
+	vueLoaderConfig = require('./vue-loader.conf'),
+	cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap),
+	cssSourceMapProd = (env === 'production' && config.build.productionSourceMap),
+	useCssSourceMap = cssSourceMapDev || cssSourceMapProd,
 
 function getEntry(globPath) {
 	var entries = {}, basename, tmp;
@@ -23,14 +24,13 @@ function getEntry(globPath) {
 
 module.exports = {
 	//入口
-	entry:entrys,
+	entry:entries,
 	//输出
 	output : {
 		path: config.build.assetsRoot,
 		publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
 		filename: '[name].js'
 	},
-	//
 	resolve:{
 		extensions: ['', '.js', '.vue'],
 		fallback: [path.join(__dirname, '../node_modules')],
@@ -63,7 +63,8 @@ module.exports = {
 				path.resolve(__dirname, "node_modules"),
 				path.resolve(__dirname, "static")
 			],
-			loader: 'vue'
+			loader: 'vue',
+        		options: vueLoaderConfig
 		},{
 			test: /\.js$/,
 			exclude: /node_modules|static|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
@@ -81,7 +82,7 @@ module.exports = {
 			exclude: /node_modules|static|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
 			loader: 'url',
 			query: {
-				limit: 10000,
+				limit: 5000,
 				name: utils.assetsPath('img/[name].[ext]')
 			}
 		},{
@@ -97,13 +98,5 @@ module.exports = {
 	/* 其他插件 */
 	externals: {
 		"UE": "window.UE"
-	},
-	vue : {
-		loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
-		postcss: [
-			require('autoprefixer')({
-				browsers: ['last 20 versions']
-			})
-		]
-    }
+	}
 }

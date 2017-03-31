@@ -1,16 +1,16 @@
 //webpack 发布配置项
-var path = require('path')						//引入 nodejs 中的path模块
-var utils = require('./utils')					
-var webpack = require('webpack')
-var config = require('../config')
-var merge = require('webpack-merge')
-var webpackBaseConfig = require('./webpack.base.conf')
-var webpackHtmlPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require("extract-text-webpack-plugin")
-var env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
+const path = require('path'),						//引入 nodejs 中的path模块
+	utils = require('./utils'),					
+	webpack = require('webpack'),
+	config = require('../config'),
+	merge = require('webpack-merge'),
+	webpackBaseConfig = require('./webpack.base.conf'),
+	webpackHtmlPlugin = require('html-webpack-plugin'),
+	ExtractTextPlugin = require("extract-text-webpack-plugin"),
+	env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
 
 //正式环境多入口打包
-var Plugins = [
+let Plugins = [
 	new webpack.DefinePlugin({
 		'process.env': env
 	}),
@@ -113,7 +113,7 @@ var webpackConfig = merge(webpackBaseConfig, {
 
 //gzip 判断
 if (config.build.productionGzip) {
-	var CompressionWebpackPlugin=require('compression-webpack-plugin');
+	let CompressionWebpackPlugin=require('compression-webpack-plugin');
 	webpackConfig.plugins.push(
 		new CompressionWebpackPlugin({
 			asset: '[path].gz[query]',
