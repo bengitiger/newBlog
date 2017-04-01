@@ -4,16 +4,14 @@ const path = require('path'),					//引入 nodejs 中的path模块
 
 //导出assets文件夹路径
 exports.assetsPath = (_path) => {
-    let assetsSubDirectory = process.env.NODE_ENV === 'production'
-        ? config.build.assetsSubDirectory
-        : config.dev.assetsSubDirectory
+    let assetsSubDirectory = process.env.NODE_ENV === 'production' ? config.build.assetsSubDirectory : config.dev.assetsSubDirectory
     return path.posix.join(assetsSubDirectory, _path)
 }
 
 //css加载器
 exports.cssLoaders = (options) => {
     options = options || {}
-    // generate loader string to be used with extract text plugin
+    // 生成 loader 字符串用于 extract text plugin
     function generateLoaders(loaders) {
         let sourceLoader = loaders.map((loader) => {
             let extraParamChar
@@ -37,7 +35,7 @@ exports.cssLoaders = (options) => {
         }
     }
 
-    // http://vue-loader.vuejs.org/en/configurations/extract-css.html
+    //参见 http://vue-loader.vuejs.org/en/configurations/extract-css.html
     return {
         css: generateLoaders(['css']),
         postcss: generateLoaders(['css']),
@@ -49,7 +47,7 @@ exports.cssLoaders = (options) => {
     }
 }
 
-// Generate loaders for standalone style files (outside of .vue)
+// 为每个单独的样式文件生成 loaders (在 .vue 中引入的外部样式)
 exports.styleLoaders = (options) => {
     let output = [], loaders = exports.cssLoaders(options)
     for (let extension in loaders) {

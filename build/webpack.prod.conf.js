@@ -18,14 +18,15 @@ const webpackConfig = merge(webpackBaseConfig, {
 			sourceMap: config.build.productionSourceMap,
 			extract: true
 		})
-	},
+    },
+    //开发工具，使用 eval 过的 souremap 开发时速度更快
 	devtool: config.build.productionSourceMap ? '#source-map' : false,
 	output: {
 		path: config.build.assetsRoot,
 		filename: utils.assetsPath('js/[name].js'),     //[name].[chunkhash]
 		chunkFilename: utils.assetsPath('js/[id].js')   //[id].[chunkhash]
     },
-    // http://vuejs.github.io/vue-loader/en/workflow/production.html
+    //参见 http://vue-loader.vuejs.org/en/workflow/production.html
 	plugins: [
         new webpack.DefinePlugin({
             'process.env': env
@@ -36,7 +37,7 @@ const webpackConfig = merge(webpackBaseConfig, {
             }
             //,sourceMap: true
         }),
-        // extract css into its own file
+        // 提取css到独立的文件中
         new ExtractTextPlugin({ filename: utils.assetsPath('css/[name].css') }),	//[name].[contenthash:5]
         // 将 vendor js 分割到各自文件中
         new webpack.optimize.CommonsChunkPlugin({
@@ -51,7 +52,7 @@ const webpackConfig = merge(webpackBaseConfig, {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vue',
             minChunks: function (module, count) {
-                // any required modules inside node_modules are extracted to vendor
+                // 所有require 自 node_modules 下的模块都会被提取到 vendor
                 return (
                     module.resource && /\.js$/.test(module.resource) && (module.resource.indexOf(path.join(__dirname, '../node_modules/vue')) === 0 || module.resource.indexOf(path.join(__dirname, '../static')) === 0)
                 )
@@ -65,8 +66,8 @@ const webpackConfig = merge(webpackBaseConfig, {
                 )
             }
         }),
-        // extract webpack runtime and module manifest to its own file in order to
-        // prevent vendor hash from being updated whenever app bundle is updated
+        // 提取 webpack runtime 和 module manifest 到独立的文件，以避免
+        // 在 bundle 更新后 vendor hash 被更新
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
             chunks: ['vendor']
@@ -85,8 +86,7 @@ Object.keys(pages).forEach(function (name) {
 			removeComments: true,
 			collapseWhitespace: true,
             removeAttributeQuotes: true
-            // more options:
-            // https://github.com/kangax/html-minifier#options-quick-reference
+            //参见 https://github.com/kangax/html-minifier#options-quick-reference
 		},
 		chunksSortMode: 'dependency'
 	})

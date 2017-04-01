@@ -15,8 +15,9 @@ module.exports = {
         path: config.build.assetsRoot,
         filename: '[name].js'
     },
+    //解析模块
     resolve:{
-        extensions: ['.js', '.vue'],
+        extensions: ['css', 'scss', '.js', '.vue'],
         modules: [
             path.resolve(__dirname, '../src'),
             path.resolve(__dirname, '../node_modules')
@@ -42,7 +43,7 @@ module.exports = {
     //webpack模块
     module : {
         rules : [{
-            test: /\.(vue|scss)$/,
+            test: /\.vue$/,
             exclude: [
                 path.resolve(__dirname, "node_modules"),
                 path.resolve(__dirname, "static")
@@ -79,7 +80,7 @@ module.exports = {
             }
         }]
     },
-    /* 其他插件 */
+    /* 其他插件，需要将插件绑定到window对象下 */
     externals: {
         "UE": "window.UE"
     }
