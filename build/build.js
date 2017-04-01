@@ -4,10 +4,10 @@ require('shelljs/global')
 env.NODE_ENV = 'production'
 
 const ora = require('ora'),
-	path = require('path'),
-	webpack = require('webpack'),
-	config = require('../config'),
-	webpackConfig = require('./webpack.prod.conf')
+    path = require('path'),
+    webpack = require('webpack'),
+    config = require('../config'),
+    webpackConfig = require('./webpack.prod.conf')
 
 let spinner = ora('building for production...')
 spinner.start()
@@ -17,22 +17,22 @@ rm('-rf', assetsPath)
 mkdir('-p', assetsPath)
 cp('-R', 'static/', assetsPath)
 
-webpack(webpackConfig, => (err, stats) {
-  spinner.stop()
-  if (err) throw err
-  process.stdout.write(stats.toString({
-    colors: true,
-    modules: false,
-    children: false,
-    chunks: false,
-    chunkModules: false
-  }) + '\n\n')
+webpack(webpackConfig, (err, stats) => {
+    spinner.stop()
+    if (err) throw err
+    process.stdout.write(stats.toString({
+        colors: true,
+        modules: false,
+        children: false,
+        chunks: false,
+        chunkModules: false
+    }) + '\n\n')
 
-  console.log('  Build complete.\n')
+    console.log('  打包完成~\n')
 
-	console.log(
-	  '  提示:\n' +
-	  '  打包后的文件必须经过 HTTP 服务器访问.\n' +
-	  '  直接通过 file:// 方式打开无效.\n'
-	)
+    console.log(
+        '  提示:\n' +
+        '  打包后的文件必须经过 HTTP 服务器访问.\n' +
+        '  直接通过 file:// 方式打开无效.\n'
+    )
 })

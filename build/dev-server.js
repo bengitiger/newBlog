@@ -1,11 +1,11 @@
 const opn = require('opn'),
-	path = require('path'),
-	http = require('http'),
-	express=require('express'),
-	webpack = require('webpack'),
-	config = require('../config'),
-	proxyMiddleware = require('http-proxy-middleware'),
-	webpackConfig = process.env.NODE_ENV === 'testing' ? require('./webpack.prod.conf') : require('./webpack.dev.conf')
+    path = require('path'),
+    http = require('http'),
+    express = require('express'),
+    webpack = require('webpack'),
+    config = require('../config'),
+    proxyMiddleware = require('http-proxy-middleware'),
+    webpackConfig = process.env.NODE_ENV === 'testing' ? require('./webpack.prod.conf') : require('./webpack.dev.conf')
 
 
 // 开发服务器默认访问端口
@@ -17,30 +17,30 @@ let compiler = webpack(webpackConfig)
 let app = express()
 
 let devMiddleware = require('webpack-dev-middleware')(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-  stats: {
-    colors: true,
-    chunks: false
-  }
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+        colors: true,
+        chunks: false
+    }
 })
 
 let hotMiddleware = require('webpack-hot-middleware')(compiler);
 // 当 html-webpack-plugin 模版更新时强制重载页面
 compiler.plugin('compilation', function (compilation) {
-	compilation.plugin('html-webpack-plugin-after-emit',
-	(data, cb) => {
-		hotMiddleware.publish({action: 'reload'});
-		cb()
-	})
+    compilation.plugin('html-webpack-plugin-after-emit',
+        (data, cb) => {
+            hotMiddleware.publish({ action: 'reload' });
+            cb()
+        })
 })
 
 // 代理 api 请求
 Object.keys(proxyTable).forEach((context) => {
-  let options = proxyTable[context]
-  if (typeof options === 'string') {
-    options = { target: options }
-  }
-  app.use(proxyMiddleware(options.filter || context, options))
+    let options = proxyTable[context]
+    if (typeof options === 'string') {
+        options = { target: options }
+    }
+    app.use(proxyMiddleware(options.filter || context, options))
 })
 
 // handle fallback for HTML5 history API
@@ -57,13 +57,13 @@ app.use(hotMiddleware)
 let staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
 app.use(staticPath, express.static('./static'))
 module.exports = app.listen(port, (err) => {
-	if (err) {
-		console.log(err)
-		return
-	}
-	let uri = 'http://localhost:' + port
-	console.log('Listening at ' + uri + '\n')
-	if (process.env.NODE_ENV !== 'testing') {
-		opn(uri)
-	}
+    if (err) {
+        console.log(err)
+        return
+    }
+    let uri = 'http://localhost:' + port
+    console.log('Listening at ' + uri + '\n')
+    if (process.env.NODE_ENV !== 'testing') {
+        opn(uri)
+    }
 })
