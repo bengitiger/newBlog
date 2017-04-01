@@ -17,7 +17,7 @@ module.exports = {
     },
     //解析模块
     resolve:{
-        extensions: ['css', 'scss', '.js', '.vue'],
+        extensions: ['css', 'scss', '.js', '.vue', '.json'],
         modules: [
             path.resolve(__dirname, '../src'),
             path.resolve(__dirname, '../node_modules')

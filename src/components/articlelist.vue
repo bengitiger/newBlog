@@ -17,7 +17,7 @@
 </template>
 
 <script>
-    const configs=require('../../config/config');
+    const configs=require('~config/config');
     export default {
         data(){
             return{

@@ -1,33 +1,33 @@
 //webpack 发布配置项
-const path = require('path'),						//引入 nodejs 中的path模块
-	utils = require('./utils'),					
-	webpack = require('webpack'),
-	config = require('../config'),
+const path = require('path'),                        //引入 nodejs 中的path模块
+    utils = require('./utils'),                    
+    webpack = require('webpack'),
+    config = require('../config'),
     merge = require('webpack-merge'),
     pages = require('./entry.conf').entriesHtml,
-	webpackBaseConfig = require('./webpack.base.conf'),
-	webpackHtmlPlugin = require('html-webpack-plugin'),
-	ExtractTextPlugin = require('extract-text-webpack-plugin'),
-	env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
+    webpackBaseConfig = require('./webpack.base.conf'),
+    webpackHtmlPlugin = require('html-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin'),
+    env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
 
 //合并/覆盖base配置
 const webpackConfig = merge(webpackBaseConfig, {
-	//模块
-	module: {
-		rules: utils.styleLoaders({
-			sourceMap: config.build.productionSourceMap,
-			extract: true
-		})
+    //模块
+    module: {
+        rules: utils.styleLoaders({
+            sourceMap: config.build.productionSourceMap,
+            extract: true
+        })
     },
     //开发工具，使用 eval 过的 souremap 开发时速度更快
-	devtool: config.build.productionSourceMap ? '#source-map' : false,
-	output: {
-		path: config.build.assetsRoot,
-		filename: utils.assetsPath('js/[name].js'),     //[name].[chunkhash]
-		chunkFilename: utils.assetsPath('js/[id].js')   //[id].[chunkhash]
+    devtool: config.build.productionSourceMap ? '#source-map' : false,
+    output: {
+        path: config.build.assetsRoot,
+        filename: utils.assetsPath('js/[name].js'),     //[name].[chunkhash]
+        chunkFilename: utils.assetsPath('js/[id].js')   //[id].[chunkhash]
     },
     //参见 http://vue-loader.vuejs.org/en/workflow/production.html
-	plugins: [
+    plugins: [
         new webpack.DefinePlugin({
             'process.env': env
         }),
@@ -38,23 +38,17 @@ const webpackConfig = merge(webpackBaseConfig, {
             //,sourceMap: true
         }),
         // 提取css到独立的文件中
-        new ExtractTextPlugin({ filename: utils.assetsPath('css/[name].css') }),	//[name].[contenthash:5]
+        new ExtractTextPlugin({
+            filename: utils.assetsPath('css/[name].css'),   //[name].[contenthash:5]
+            allChunks: true
+        }),
         // 将 vendor js 分割到各自文件中
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: function (module, count) {
-                // any required modules inside node_modules are extracted to vendor
+                // 所有从 node_modules 引入的模块都会被合并到 vendor
                 return (
                     module.resource && /\.js$/.test(module.resource) && (module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0 || module.resource.indexOf(path.join(__dirname, '../static')) === 0)
-                )
-            }
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'vue',
-            minChunks: function (module, count) {
-                // 所有require 自 node_modules 下的模块都会被提取到 vendor
-                return (
-                    module.resource && /\.js$/.test(module.resource) && (module.resource.indexOf(path.join(__dirname, '../node_modules/vue')) === 0 || module.resource.indexOf(path.join(__dirname, '../static')) === 0)
                 )
             }
         }),
@@ -77,34 +71,34 @@ const webpackConfig = merge(webpackBaseConfig, {
 
 // vue 多页面入口
 Object.keys(pages).forEach(function (name) {
-	var plugin = new webpackHtmlPlugin({
-		filename: name + '.html',
-		template: name + '.html',
-		inject: true,
-		chunks: [name, 'vue', 'iconfont', 'vendor'],
-		minify: {
-			removeComments: true,
-			collapseWhitespace: true,
+    var plugin = new webpackHtmlPlugin({
+        filename: name + '.html',
+        template: name + '.html',
+        chunks: [name, 'iconfont', 'vendor', 'manifest'],
+        inject: true,
+        minify: {
+        removeComments: true,
+            collapseWhitespace: true,
             removeAttributeQuotes: true
             //参见 https://github.com/kangax/html-minifier#options-quick-reference
-		},
-		chunksSortMode: 'dependency'
-	})
-	webpackConfig.plugins.push(plugin);
+        },
+        chunksSortMode: 'dependency'
+    })
+    webpackConfig.plugins.push(plugin);
 })
 
 //gzip 压缩
 if (config.build.productionGzip) {
-	let CompressionWebpackPlugin=require('compression-webpack-plugin');
-	webpackConfig.plugins.push(
-		new CompressionWebpackPlugin({
-			asset: '[path].gz[query]',
-			algorithm: 'gzip',
-			test: new RegExp('\\.(' + config.build.productionGzipExtensions.join('|') + ')$'),
-			threshold: 10240,
-			minRatio: 0.8
-		})
-	)
+    let CompressionWebpackPlugin=require('compression-webpack-plugin');
+    webpackConfig.plugins.push(
+        new CompressionWebpackPlugin({
+            asset: '[path].gz[query]',
+            algorithm: 'gzip',
+            test: new RegExp('\\.(' + config.build.productionGzipExtensions.join('|') + ')$'),
+            threshold: 10240,
+            minRatio: 0.8
+        })
+    )
 }
 
 module.exports = webpackConfig

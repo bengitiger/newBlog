@@ -9,7 +9,7 @@ const ora = require('ora'),
     config = require('../config'),
     webpackConfig = require('./webpack.prod.conf')
 
-let spinner = ora('building for production...')
+let spinner = ora('正在打包...')
 spinner.start()
 
 let assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)

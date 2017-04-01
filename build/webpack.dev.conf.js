@@ -5,7 +5,8 @@ const path = require('path'),						//引入 nodejs 中的path模块
 	config = require('../config'),
 	merge = require('webpack-merge'),
 	webpackBaseConfig = require('./webpack.base.conf'),
-	webpackHtmlPlugin = require('html-webpack-plugin')
+    webpackHtmlPlugin = require('html-webpack-plugin'),
+    FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 const webpackConfig = merge(webpackBaseConfig, {
     module: {
@@ -19,7 +20,8 @@ const webpackConfig = merge(webpackBaseConfig, {
         }),
         //参见 https://github.com/glenjamin/webpack-hot-middleware#installation--usage
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin(),
+        new FriendlyErrorsPlugin()
     ]
 })
 

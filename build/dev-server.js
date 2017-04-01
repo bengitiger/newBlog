@@ -18,20 +18,22 @@ let app = express()
 
 let devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
+    quiet: true,
     stats: {
         colors: true,
         chunks: false
     }
 })
 
-let hotMiddleware = require('webpack-hot-middleware')(compiler);
+let hotMiddleware = require('webpack-hot-middleware')(compiler, {
+    log: () => {}
+});
 // 当 html-webpack-plugin 模版更新时强制重载页面
-compiler.plugin('compilation', function (compilation) {
-    compilation.plugin('html-webpack-plugin-after-emit',
-        (data, cb) => {
-            hotMiddleware.publish({ action: 'reload' });
-            cb()
-        })
+compiler.plugin('compilation', (compilation) => {
+    compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
+        hotMiddleware.publish({ action: 'reload' })
+        cb()
+    })
 })
 
 // 代理 api 请求
