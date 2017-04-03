@@ -7,9 +7,11 @@ module.exports = {
         sourceMap: isProduction ? config.build.productionSourceMap : config.dev.cssSourceMap,
         extract: isProduction
     }),
-    postcss: [
-        require('autoprefixer')({
-            browsers: ['last 20 versions']
-        })
-    ]
+    options: {
+        postcss: [
+            require('autoprefixer')({
+                browsers: ['last 20 versions']
+            })
+        ]
+    }
 }

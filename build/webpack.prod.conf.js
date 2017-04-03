@@ -14,10 +14,21 @@ const path = require('path'),                        //引入 nodejs 中的path�
 const webpackConfig = merge(webpackBaseConfig, {
     //模块
     module: {
-        rules: utils.styleLoaders({
+        /*rules: utils.styleLoaders({
             sourceMap: config.build.productionSourceMap,
             extract: true
-        })
+        })*/
+        rules: [{
+            test: /\.(css|less|sass|scss|stylus|styl)$/,
+            exclude: [
+                path.resolve(__dirname, "../node_modules"),
+                path.resolve(__dirname, "../static")
+            ],
+            use: ExtractTextPlugin.extract({
+                fallback: 'vue-style-loader',
+                use: ['css-loader?importLoaders=1', 'postcss-loader', 'sass-loader']    //'less-loader','sass-loader?indentedSyntax','sass-loader','stylus-loader','stylus-loader'
+            })
+        }]
     },
     //开发工具，使用 eval 过的 souremap 开发时速度更快
     devtool: config.build.productionSourceMap ? '#source-map' : false,
@@ -29,37 +40,56 @@ const webpackConfig = merge(webpackBaseConfig, {
     //参见 http://vue-loader.vuejs.org/en/workflow/production.html
     plugins: [
         new webpack.DefinePlugin({
-            'process.env': env
+            'process.env': {
+                'NODE_ENV': JSON.stringify('production')
+            }
         }),
         new webpack.optimize.UglifyJsPlugin({
+            // 最紧凑的输出
+            beautify: false,
+            // 删除所有的注释
+            comments: false,
             compress: {
-                warnings: false
+                // 在UglifyJs删除没有用到的代码时不输出警告  
+                warnings: false,
+                // 删除所有的 `console` 语句,还可以兼容ie浏览器
+                drop_console: true,
+                // 内嵌定义了但是只用到1次的变量
+                collapse_vars: true,
+                // 提取出现多次但是没有定义成变量去引用的静态值
+                reduce_vars: true
             }
             //,sourceMap: true
         }),
-        // 提取css到独立的文件中
+        // 将css文件打包成独立文件
         new ExtractTextPlugin({
             filename: utils.assetsPath('css/[name].css'),   //[name].[contenthash:5]
             allChunks: true
         }),
-        // 将 vendor js 分割到各自文件中
+        // 压缩 css
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+        }),
+        // 将公共模块打包到1个公共文件 vendor 中
+        //minChunks的值决定有多少个entry文件调用了相同模块，才打包进公共文件中
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            minChunks: function (module, count) {
+            minChunks:2
+            /*minChunks: function (module, count) {
                 // 所有从 node_modules 引入的模块都会被合并到 vendor
                 return (
-                    module.resource && /\.js$/.test(module.resource) && (module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0 || module.resource.indexOf(path.join(__dirname, '../static')) === 0)
+                    module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
                 )
-            }
+            }*/
         }),
-        new webpack.optimize.CommonsChunkPlugin({
+        /*new webpack.optimize.CommonsChunkPlugin({
             name: 'iconfont',
             minChunks: function (module, count) {
                 return (
                     module.resource && /\.js$/.test(module.resource) && module.resource.indexOf( path.join(__dirname, '../static/iconfont') ) === 0
                 )
             }
-        }),
+        }),*/
         // 提取 webpack runtime 和 module manifest 到独立的文件，以避免
         // 在 bundle 更新后 vendor hash 被更新
         new webpack.optimize.CommonsChunkPlugin({
@@ -71,13 +101,13 @@ const webpackConfig = merge(webpackBaseConfig, {
 
 // vue 多页面入口
 Object.keys(pages).forEach(function (name) {
-    var plugin = new webpackHtmlPlugin({
+    let plugin = new webpackHtmlPlugin({
         filename: name + '.html',
         template: name + '.html',
-        chunks: [name, 'iconfont', 'vendor', 'manifest'],
+        chunks: [name, 'vendor', 'manifest'],
         inject: true,
         minify: {
-        removeComments: true,
+            removeComments: true,
             collapseWhitespace: true,
             removeAttributeQuotes: true
             //参见 https://github.com/kangax/html-minifier#options-quick-reference
@@ -89,7 +119,7 @@ Object.keys(pages).forEach(function (name) {
 
 //gzip 压缩
 if (config.build.productionGzip) {
-    let CompressionWebpackPlugin=require('compression-webpack-plugin');
+    let CompressionWebpackPlugin = require('compression-webpack-plugin');
     webpackConfig.plugins.push(
         new CompressionWebpackPlugin({
             asset: '[path].gz[query]',

@@ -17,7 +17,7 @@ module.exports = {
     },
     //解析模块
     resolve:{
-        extensions: ['css', 'scss', '.js', '.vue', '.json'],
+        extensions: ['scss', 'less', '.js', 'jsx', '.vue', '.json'],
         modules: [
             path.resolve(__dirname, '../src'),
             path.resolve(__dirname, '../node_modules')
@@ -36,8 +36,7 @@ module.exports = {
             '~plugin': path.resolve(__dirname, "../src/plugin"),
             '~views': path.resolve(__dirname, "../src/views"),
             '~utils': path.resolve(__dirname, "../src/utils"),
-            '~store': path.resolve(__dirname, "../src/store"),
-            '~dist': path.resolve(__dirname, "../dist")
+            '~store': path.resolve(__dirname, "../src/store")
         }
     },
     //webpack模块
@@ -45,15 +44,17 @@ module.exports = {
         rules : [{
             test: /\.vue$/,
             exclude: [
-                path.resolve(__dirname, "node_modules"),
-                path.resolve(__dirname, "static")
+                path.resolve(__dirname, "../node_modules"),
+                path.resolve(__dirname, "../static")
             ],
+            include:[path.resolve(__dirname, '../src')],
             loader: 'vue-loader',
             options: vueLoaderConfig
         },{
             test: /\.js$/,
             exclude: /node_modules|static|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
-            loader: 'babel-loader'
+            include:[path.resolve(__dirname, '../src')],
+            loader: 'babel-loader?cacheDirectory'
         },{
             test: /\.json$/,
             exclude: /node_modules|static|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
@@ -71,14 +72,15 @@ module.exports = {
                 name: utils.assetsPath('img/[name].[ext]')
             }
         },{
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+            test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
             exclude: /node_modules|static|vue\/dist|vue-hot-reload-api|vue-router\/|vue-loader/,
             loader: 'url-loader',
             query: {
                 limit: 10000,
                 name: utils.assetsPath('fonts/[name].[ext]')	//fonts/[name].[hash:7].[ext]
             }
-        }]
+        }],
+        noParse: /node_modules\/(jquey|moment|chart|iconfont\.js)/
     },
     /* 其他插件，需要将插件绑定到window对象下 */
     externals: {
