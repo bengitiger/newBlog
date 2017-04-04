@@ -19,19 +19,29 @@ const webpackConfig = merge(webpackBaseConfig, {
             extract: true
         })*/
         rules: [{
-            test: /\.(css|less|sass|scss|stylus|styl)$/,
+            test: /\.(sass|scss)$/,
             exclude: [
                 path.resolve(__dirname, "../node_modules"),
                 path.resolve(__dirname, "../static")
             ],
             use: ExtractTextPlugin.extract({
                 fallback: 'vue-style-loader',
-                use: ['css-loader?importLoaders=1', 'postcss-loader', 'sass-loader']    //'less-loader','sass-loader?indentedSyntax','sass-loader','stylus-loader','stylus-loader'
+                use: ['css-loader?importLoaders=1', 'postcss-loader', 'sass-loader']    //'sass-loader?indentedSyntax'
+            })
+        },{
+            test: /\.less$/,
+            exclude: [
+                path.resolve(__dirname, "../node_modules"),
+                path.resolve(__dirname, "../static")
+            ],
+            use: ExtractTextPlugin.extract({
+                fallback: 'vue-style-loader',
+                use: ['css-loader?importLoaders=1', 'postcss-loader', 'less-loader']    //'stylus-loader','stylus-loader'
             })
         }]
     },
     //开发工具，使用 eval 过的 souremap 开发时速度更快
-    devtool: config.build.productionSourceMap ? '#source-map' : false,
+    devtool: config.build.productionSourceMap ? '#source-map':false,
     output: {
         path: config.build.assetsRoot,
         filename: utils.assetsPath('js/[name].js'),     //[name].[chunkhash]
@@ -70,28 +80,28 @@ const webpackConfig = merge(webpackBaseConfig, {
         new webpack.LoaderOptionsPlugin({
             minimize: true
         }),
+        //webpack 打包时排除的文件(貌似不太管用)
+        //new webpack.IgnorePlugin(/\.\/iconfont.js$/),
         // 将公共模块打包到1个公共文件 vendor 中
         //minChunks的值决定有多少个entry文件调用了相同模块，才打包进公共文件中
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            minChunks:2
-            /*minChunks: function (module, count) {
+            minChunks: function (module) {
                 // 所有从 node_modules 引入的模块都会被合并到 vendor
                 return (
                     module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
                 )
-            }*/
+            }
         }),
-        /*new webpack.optimize.CommonsChunkPlugin({
+        new webpack.optimize.CommonsChunkPlugin({
             name: 'iconfont',
-            minChunks: function (module, count) {
+            minChunks: function (module) {
                 return (
                     module.resource && /\.js$/.test(module.resource) && module.resource.indexOf( path.join(__dirname, '../static/iconfont') ) === 0
                 )
             }
-        }),*/
-        // 提取 webpack runtime 和 module manifest 到独立的文件，以避免
-        // 在 bundle 更新后 vendor hash 被更新
+        }),
+        // 提取 webpack runtime 和 module manifest 到独立的文件，以避免在 bundle 更新后 vendor hash 被更新
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
             chunks: ['vendor']
