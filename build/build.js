@@ -1,7 +1,7 @@
 //vue build 项目配置
 // https://github.com/shelljs/shelljs
 require('shelljs/global')
-env.NODE_ENV = 'production'
+process.env.NODE_ENV = 'production'
 
 const ora = require('ora'),
     path = require('path'),

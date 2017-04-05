@@ -84,6 +84,6 @@ module.exports = {
     },
     /* 其他插件，需要将插件绑定到window对象下 */
     externals: {
-        "UE": "window.UE"
+        //"UE": "window.UE"
     }
 }

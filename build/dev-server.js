@@ -18,16 +18,14 @@ let app = express()
 
 let devMiddleware = require('webpack-dev-middleware')(compiler, {
     publicPath: webpackConfig.output.publicPath,
-    quiet: true,
+    //quiet: true,
     stats: {
         colors: true,
         chunks: false
     }
 })
 
-let hotMiddleware = require('webpack-hot-middleware')(compiler, {
-    log: () => {}
-});
+let hotMiddleware = require('webpack-hot-middleware')(compiler);
 // 当 html-webpack-plugin 模版更新时强制重载页面
 compiler.plugin('compilation', (compilation) => {
     compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {

@@ -57,6 +57,5 @@ exports.styleLoaders = (options) => {
             loader: loader
         })
     }
-    console.log(output);
     return output
 }
