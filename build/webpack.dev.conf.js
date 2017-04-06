@@ -3,7 +3,8 @@ const path = require('path'),						//引入 nodejs 中的path模块
 	utils = require('./utils'),					
 	webpack = require('webpack'),
 	config = require('../config'),
-	merge = require('webpack-merge'),
+    merge = require('webpack-merge'),
+    entries = require('./entry.conf').entriesHtml,		        //获得入口文件
 	webpackBaseConfig = require('./webpack.base.conf'),
     webpackHtmlPlugin = require('html-webpack-plugin'),
     FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
@@ -13,7 +14,7 @@ const webpackConfig = merge(webpackBaseConfig, {
         rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
     },
     // 使用 eval 过的 souremap 开发时速度更快
-    devtool: '#eval-source-map',
+    devtool: '#cheap-module-eval-source-map',
     plugins: [
         new webpack.DefinePlugin({
             'process.env': config.dev.env
@@ -31,10 +32,10 @@ Object.keys(webpackBaseConfig.entry).forEach(function (name) {
     //多入口页面引用
     let plugin = new webpackHtmlPlugin({
         filename: name + '.html',
-        template: name+'.html',
+        template: name + '.html',
+        chunks: [name, 'vendor', 'manifest'],
         // 自动将引用插入html
-        inject: true,
-        chunks: [name]
+        inject: true
     });
     webpackConfig.plugins.push(plugin);
 })

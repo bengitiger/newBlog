@@ -3,12 +3,28 @@ const path = require('path'),						//引入 nodejs 中的path模块
     glob = require('glob'),
     utils = require('./utils'),
     config = require('../config'),
-    entries = require('./entry.conf'),		        //获得入口文件
+    //entries = require('./entry.conf'),		        //获得入口文件
     vueLoaderConfig = require('./vue-loader.conf')
+
+
+var entries = getEntry("./src/views/**/*.js"); // 获得入口js文件
+
+function getEntry(globPath) {
+  var entries = {},
+      basename,
+      tmp;
+      glob.sync(globPath).forEach(function (entry) {
+        basename = path.basename(entry, path.extname(entry));
+        entries[basename] = [];
+        entries[basename].push(entry);
+
+      });
+      return entries;
+}
 
 module.exports = {
     //入口
-    entry : entries.entriesJs,
+    entry : entries,
     //输出
     output : {
         publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,

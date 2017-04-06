@@ -111,7 +111,7 @@ const webpackConfig = merge(webpackBaseConfig, {
 })
 
 // vue 多页面入口
-Object.keys(pages).forEach(function (name) {
+Object.keys(webpackBaseConfig.entry).forEach(function (name) {
     let plugin = new webpackHtmlPlugin({
         filename: name + '.html',
         template: name + '.html',
