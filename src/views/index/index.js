@@ -4,6 +4,7 @@
 	import VueRouter from 'vue-router'				//引入vue路由插件
 	import VueCookie from 'vue-cookie'				//引入vue cookie
 	import { sync } from 'vuex-router-sync'		//同步vuex与路由的状态
+	import lazyload from 'vue-lazyload'
 	import App from '~components/App.vue'
 
 	const index = resolve => require(['~views/index/index.vue'], resolve)
@@ -12,6 +13,7 @@
 	const nothing = resolve => require(['~components/404.vue'], resolve)
 
 	Vue.use(VueRouter);					 	//注册VueRouter
+	Vue.use(lazyload, {});				//注册lazyload
 	Vue.use(VueCookie);						//注册cookie
 
 

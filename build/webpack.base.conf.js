@@ -28,6 +28,7 @@ module.exports = {
             '~config': path.resolve(__dirname, "../config"),
             '~static': path.resolve(__dirname, '../static'),
             '~assets': path.resolve(__dirname, "../src/assets"),
+            '~img': path.resolve(__dirname, "../src/assets/img"),
             '~js': path.resolve(__dirname, "../src/assets/js"),
             '~sass': path.resolve(__dirname, "../src/assets/sass"),
             '~components': path.resolve(__dirname, "../src/components"),

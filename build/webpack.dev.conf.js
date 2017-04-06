@@ -21,6 +21,7 @@ Object.keys(baseWebpackConfig.entry).forEach((name) => {
     });
     module.exports.plugins.push(plugin);*/
 })
+
 module.exports = merge(baseWebpackConfig, {
     module: {
         rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
@@ -38,7 +39,6 @@ module.exports = merge(baseWebpackConfig, {
     ]
 })
 
-
 for (let page in entries) {
     let fileName = page.split('/')[1] === 'home' ? 'index' + '.html' : page.split('/')[1] + '.html',
     plugin = new HtmlWebpackPlugin({
@@ -50,5 +50,3 @@ for (let page in entries) {
     });
     module.exports.plugins.push(plugin)
 }
-
-//module.exports = webpackConfig

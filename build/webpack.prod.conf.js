@@ -4,7 +4,7 @@ const path = require('path'),                        //引入 nodejs 中的path�
     webpack = require('webpack'),
     config = require('../config'),
     merge = require('webpack-merge'),
-    pages = require('./entry.conf').entriesHtml,
+    entries = require('./entry.conf').entriesHtml,                //获得入口文件
     baseWebpackConfig = require('./webpack.base.conf'),
     HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
@@ -108,23 +108,30 @@ const webpackConfig = merge(baseWebpackConfig, {
     ]
 })
 
-// vue 多页面入口
-Object.keys(baseWebpackConfig.entry).forEach(function (name) {
-    let plugin = new HtmlWebpackPlugin({
-        filename: name + '.html',
-        template: name + '.html',
-        chunks: [name, 'vendor', 'manifest'],
+for (let page in entries) {
+    let fileName = page.split('/')[1] === 'home' ? 'index' + '.html' : page.split('/')[1] + '.html',
+    plugin = new HtmlWebpackPlugin({
+        filename: fileName,
+        template: entries[page],
+        chunks: [page, 'vendor', 'manifest'],
+        // 自动将引用插入html
         inject: true,
+        favicon:'./logo.png',
         minify: {
+            sortClassName: true,
             removeComments: true,
+            sortAttributes: true,
             collapseWhitespace: true,
-            removeAttributeQuotes: true
-            //参见 https://github.com/kangax/html-minifier#options-quick-reference
+            removeEmptyAttributes: true,
+            // removeAttributeQuotes: true
+            // more options:
+            // https://github.com/kangax/html-minifier#options-quick-reference
         },
+        // necessary to consistently work with multiple chunks via CommonsChunkPlugin
         chunksSortMode: 'dependency'
-    })
-    webpackConfig.plugins.push(plugin);
-})
+    });
+    webpackConfig.plugins.push(plugin)
+}
 
 //gzip 压缩
 if (config.build.productionGzip) {

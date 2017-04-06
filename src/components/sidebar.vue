@@ -6,7 +6,7 @@
                 i.line
             .avatarBox
                 .avatar
-                    img(src='../assets/images/header_img.jpg')
+                    img(src='/static/header_img.jpg')
                 p.userName key done
             ul.menuList(@click='asideToggle')
                 li
