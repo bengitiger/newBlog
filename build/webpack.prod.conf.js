@@ -5,13 +5,13 @@ const path = require('path'),                        //引入 nodejs 中的path�
     config = require('../config'),
     merge = require('webpack-merge'),
     pages = require('./entry.conf').entriesHtml,
-    webpackBaseConfig = require('./webpack.base.conf'),
-    webpackHtmlPlugin = require('html-webpack-plugin'),
+    baseWebpackConfig = require('./webpack.base.conf'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
     env = process.env.NODE_ENV === 'testing' ? require('../config/test.env') : config.build.env
 
 //合并/覆盖base配置
-const webpackConfig = merge(webpackBaseConfig, {
+const webpackConfig = merge(baseWebpackConfig, {
     //模块
     module: {
         /*rules: utils.styleLoaders({
@@ -80,9 +80,7 @@ const webpackConfig = merge(webpackBaseConfig, {
         new webpack.LoaderOptionsPlugin({
             minimize: true
         }),
-        //webpack 打包时排除的文件(貌似不太管用)
-        //new webpack.IgnorePlugin(/\.\/iconfont.js$/),
-        // 将公共模块打包到1个公共文件 vendor 中
+        // 将公共模块打包到公共文件 vendor 中
         //minChunks的值决定有多少个entry文件调用了相同模块，才打包进公共文件中
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
@@ -111,8 +109,8 @@ const webpackConfig = merge(webpackBaseConfig, {
 })
 
 // vue 多页面入口
-Object.keys(webpackBaseConfig.entry).forEach(function (name) {
-    let plugin = new webpackHtmlPlugin({
+Object.keys(baseWebpackConfig.entry).forEach(function (name) {
+    let plugin = new HtmlWebpackPlugin({
         filename: name + '.html',
         template: name + '.html',
         chunks: [name, 'vendor', 'manifest'],

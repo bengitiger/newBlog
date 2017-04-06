@@ -4,16 +4,17 @@ const path = require('path'),
 
 let globPath = {
     js: './src/views/**/*.js',
-    html: './*.html'
+    html: './src/views/**/*.html'
 }
 
 // vue 多页面入口
 function getEntries(globPath) {
-    let entries = {}, basename, tmp;
+    let entries = {}, basename, tmp, pathname;
     glob.sync(globPath).forEach((entry) => {
         basename = path.basename(entry, path.extname(entry));
-        entries[basename] = [];
-        entries[basename].push(entry);
+        tmp = entry.split('/').splice(-3);
+        pathname = tmp.splice(0, 1) + '/' + basename;
+        entries[pathname] = entry;
     });
     return entries;
 }

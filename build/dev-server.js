@@ -1,6 +1,5 @@
 const opn = require('opn'),
     path = require('path'),
-    http = require('http'),
     express = require('express'),
     webpack = require('webpack'),
     config = require('../config'),

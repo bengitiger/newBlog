@@ -1,15 +1,27 @@
 //webpack 开发配置项
-const path = require('path'),						//引入 nodejs 中的path模块
-	utils = require('./utils'),					
-	webpack = require('webpack'),
-	config = require('../config'),
+const utils = require('./utils'),                    
+    webpack = require('webpack'),
+    config = require('../config'),
     merge = require('webpack-merge'),
-    entries = require('./entry.conf').entriesHtml,		        //获得入口文件
-	webpackBaseConfig = require('./webpack.base.conf'),
-    webpackHtmlPlugin = require('html-webpack-plugin'),
+    entries = require('./entry.conf').entriesHtml,                //获得入口文件
+    baseWebpackConfig = require('./webpack.base.conf'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
     FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
-const webpackConfig = merge(webpackBaseConfig, {
+// vue 多页面入口
+Object.keys(baseWebpackConfig.entry).forEach((name) => {
+    baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
+    //多入口页面引用
+    /*let plugin = new HtmlWebpackPlugin({
+        filename: name + '.html',
+        template: name + '.html',
+        chunks: [name, 'vendor', 'manifest'],
+        // 自动将引用插入html
+        inject: true
+    });
+    module.exports.plugins.push(plugin);*/
+})
+module.exports = merge(baseWebpackConfig, {
     module: {
         rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
     },
@@ -26,18 +38,17 @@ const webpackConfig = merge(webpackBaseConfig, {
     ]
 })
 
-// vue 多页面入口
-Object.keys(webpackBaseConfig.entry).forEach(function (name) {
-    webpackBaseConfig.entry[name] = ['./build/dev-client'].concat(webpackBaseConfig.entry[name])
-    //多入口页面引用
-    let plugin = new webpackHtmlPlugin({
-        filename: name + '.html',
-        template: name + '.html',
-        chunks: [name, 'vendor', 'manifest'],
+
+for (let page in entries) {
+    let fileName = page.split('/')[1] === 'home' ? 'index' + '.html' : page.split('/')[1] + '.html',
+    plugin = new HtmlWebpackPlugin({
+        filename: fileName,
+        template: entries[page],
+        chunks: [page, 'vendor', 'manifest'],
         // 自动将引用插入html
         inject: true
     });
-    webpackConfig.plugins.push(plugin);
-})
+    module.exports.plugins.push(plugin)
+}
 
-module.exports = webpackConfig
+//module.exports = webpackConfig
