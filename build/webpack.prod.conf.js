@@ -84,12 +84,13 @@ const webpackConfig = merge(baseWebpackConfig, {
         //minChunks的值决定有多少个entry文件调用了相同模块，才打包进公共文件中
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            minChunks: function (module) {
+            minChunks:2
+            /*minChunks: function (module) {
                 // 所有从 node_modules 引入的模块都会被合并到 vendor
                 return (
                     module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.join(__dirname, '../node_modules')) === 0
                 )
-            }
+            }*/
         }),
         /*new webpack.optimize.CommonsChunkPlugin({
             name: 'iconfont',
