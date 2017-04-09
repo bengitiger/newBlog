@@ -11,8 +11,11 @@
                 small.about In <em class='mark classes'>{{item.classes}}</em> on <em class='mark date'>{{item.date}}</em> by {{item.author}}
                 .summary(v-if='item.src')
                     .summaryTxt {{item.summary}}
-                    img.img(:src="imgPath + item.src + '.jpg'")
+                    .img
+                        img(:src="imgPath + item.src + '.jpg'")
                 .summary(v-else) {{item.summary}}
+                p.articleFoot
+                    router-link(:to="'/article/' + item.url", target='_blank') 阅读全文
 
 </template>
 

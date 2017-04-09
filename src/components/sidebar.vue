@@ -46,10 +46,13 @@
         methods:{
             ...mapActions(['loginState']),
             asideToggle(){
+                let html=document.getElementsByTagName('html')[0];
                 if(this.asideStatusClass=='active'){
                     this.asideStatusClass='';
+                    html.className='';
                 }else{
                     this.asideStatusClass='active';
+                    html.className='layerShow';
                 }
             },
             logout(){

@@ -11,9 +11,9 @@
                 li(v-if='!loginState')
                     router-link(to="/login") 登录
             .searchBox.inblock(:class='searchCls')
-                input.searchField(type='text', placeholder='Search...', v-model='searchTxt', @input='input', @focus='focus', @blur='blur')
                 svg.icon.icon-search(aria-hidden="true", @dblclick.prevent='dblclick($event)')
                     use(xlink:href="#icon-search")
+                input.searchField(type='text', placeholder='Search...', v-model='searchTxt', @input='input', @focus='focus', @blur='blur')
 
 </template>
 
@@ -33,7 +33,7 @@
         },
         mounted(){
             this.$nextTick(()=>{
-                console.log(this.$router);
+                
             });
         },
         methods:{

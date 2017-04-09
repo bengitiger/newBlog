@@ -1,17 +1,6 @@
 @import "mixins/reset";
 //@import "./iconfont";
-@mixin round($top, $bool:false) {
-    @if $bool==rem {
-        -webkit-border-radius: rem($top);
-        -moz-border-radius: rem($top);
-        border-radius: rem($top);
-    }
-    @else {
-        -webkit-border-radius: $top;
-        -moz-border-radius: $top;
-        border-radius: $top;
-    }
-}
+
 /* public */
 .icon {
    width: 1em; height: 1em;
@@ -118,12 +107,14 @@ pre{white-space:pre-wrap !important;}
 
 .layer, .layermask{position: fixed;}
 */
-.fade-enter-active, .fade-leave-active {
-  transition:opacity .2s;
+
+html.layerShow, html.layerShow body{
+    height: 100%;
+    overflow: hidden;
 }
-.fade-enter, .fade-leave-to {
-  opacity: 0
-}
+
+.fade-enter-active, .fade-leave-active {transition:opacity .2s;}
+.fade-enter, .fade-leave-to {opacity: 0;}
 
 .table{
     /* 公共表格 */
@@ -176,13 +167,12 @@ pre{white-space:pre-wrap !important;}
 
     .searchBox{
         height: 30px;
-        border:1px solid #d6d6d6;
-        border-radius: 7px;
+        border-bottom:1px solid #d6d6d6;
         vertical-align:top;
         margin-top:14px;
+        margin-left:15px;
         overflow: hidden;
-        float:right;
-        &.extend{
+        &.extend{border-color:#32b16c;
             .searchField{width:110px;}
             .icon-search{color:#32b16c;}
         }
@@ -190,8 +180,9 @@ pre{white-space:pre-wrap !important;}
             height: 24px;
             line-height:24px;
             padding:3px 7px;
-            width: 42px;
+            width: 41px;
             transition-duration:.3s;
+            transition-timing-function:ease-in-out;
         }
         .icon-search{
             cursor:pointer;
@@ -204,10 +195,10 @@ pre{white-space:pre-wrap !important;}
     }
 }
 
-#sidebar{position:relative; z-index: 10001;
+#sidebar{/*position:relative; z-index: 10001;*/
     &.active{
         .asidebg{left:0;}
-        .asideMenu{
+        .asideMenu{height: 100%;
             transform:translateX(0);
         }
         .asideToggle{
@@ -235,9 +226,10 @@ pre{white-space:pre-wrap !important;}
         background:rgba(0,0,0,.2);
     }
     .asideMenu{
-        position: fixed;
-        top:0;left:0;bottom:0;right:0;
-        z-index: 101; width: 140px;
+        position:fixed;
+        top:0; left:0;
+        z-index: 101;
+        width: 140px;
         transform:translateX(-100%);
         transition-duration:.3s;
         min-height: 600px;
@@ -384,7 +376,18 @@ pre{white-space:pre-wrap !important;}
             text-align:justify;
             margin-top: 10px;
             line-height:1.5;
+            overflow:hidden;
+            display: table;
         }
+        .summaryTxt{
+            display: table-cell;
+            vertical-align:middle;
+            width:76%;
+        }
+        .img{display: table-cell;
+            vertical-align:middle;
+        }
+        img{display:block;width:100%;}
     }
     
 }
